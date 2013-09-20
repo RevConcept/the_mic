@@ -12,10 +12,35 @@
 
 								<?php if ( is_front_page() || is_home() ) : ?>
 
-									<?php get_template_part( 'mic_main_sections' ); ?>
-									<?php get_template_part( 'mic_block_section' ); ?>
-									<?php get_template_part( 'mic_map_section' ); ?>
+									<!-- top section -->
+									<div id="top-section">
+										<?php mic_print_top_section(); ?>
+									</div>
 
+									<!-- section two -->
+									<div id="section-two">
+										<?php mic_print_section_two(); ?>
+									</div>
+
+									<div id="window1">
+									</div>
+
+									<!-- section three -->
+									<div id="section-three">
+										<?php mic_print_section_three(); ?>
+									</div>
+
+									<div id="window2">
+									</div>
+
+									<!-- section four -->
+									<div id="section-four">
+										<?php mic_print_section_four(); ?>
+									</div>
+
+									<div id="map-section" >
+										<div id="googleMap" style="width:100%;height:380px;"></div>
+									</div>
 								<?php endif; ?>
 
 								

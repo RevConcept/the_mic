@@ -161,102 +161,158 @@ function bones_wpsearch($form) {
 	return $form;
 } // don't remove this bracket!
 
-function revcon_print_home_section() {
+function mic_print_top_section() {
 
-	$home_section =  get_field('home_section', 'option');
-
-	//home section
-	if( get_field('image', $home_section->ID) ) : 
-		echo '<img src="' . get_field( 'image', $home_section->ID ) . '" alt="Home Image" />';
+	//top section	
+	if ( get_field('top_section_image', 'options') ) :
+		echo '<img src="' . get_field('top_section_image', 'options') . '" alt="Majestic Isle Casino" />';
 	endif;
-
 }
 
-function revcon_print_section_two() {
-	$section_two =  get_field('section_two', 'option');
-	$sec_two_fields = get_fields($section_two->ID);
+function mic_print_section_two() {
 
-	//icons
-	if ( $sec_two_fields['icon'] ) :
-		echo '<img src="' . $sec_two_fields['icon'] . '" alt="Icon" />';
+	//icon	
+	if ( get_field('section_two_icon', 'options') ) :
+		echo '<img src="' . get_field('section_two_icon', 'options') . '" alt="Majestic Isle Casino" />';
 	endif;
-	//titles
-	if ( $sec_two_fields['title'] ) :
-		echo '<h2>' . $sec_two_fields['title'] . '</h2>';
+	//title	
+	if ( get_field('section_two_title', 'options') ) :
+		echo '<h2>' . get_field('section_two_title', 'options') . '</h2>';
 	endif;
-	//sub headings
-	if ( $sec_two_fields['sub_heading'] ) :
-		echo '<h3>' . $sec_two_fields['sub_heading'] . '</h3>';
+	//subtitle	
+	if ( get_field('section_two_subtitle', 'options') ) :
+		echo '<span class="subtitle">' . get_field('section_two_subtitle', 'options') . '</span>';
+	endif;
+	//content	
+	if ( get_field('section_two_content', 'options') ) :
+		echo get_field('section_two_content', 'options');
+	endif;
+}
+
+function mic_print_section_three() {
+
+	//icon	
+	if ( get_field('section_three_icon', 'options') ) :
+		echo '<img src="' . get_field('section_three_icon', 'options') . '" alt="Majestic Isle Casino" />';
+	endif;
+	//title	
+	if ( get_field('section_three_title', 'options') ) :
+		echo '<h2>' . get_field('section_three_title', 'options') . '</h2>';
+	endif;
+	//subtitle	
+	if ( get_field('section_three_subtitle', 'options') ) :
+		echo '<span class="subtitle">' . get_field('section_three_subtitle', 'options') . '</span>';
+	endif;
+	//content	
+	if ( get_field('section_three_content', 'options') ) :
+		echo get_field('section_three_content', 'options');
+	endif;
+}
+
+function mic_print_section_four() {
+
+	//three columns
+	if ( get_field('three_columns', 'options') ) :
+		while ( has_sub_field('three_columns', 'options') ) :
+			echo '<div id="three-columns">';
+			echo '<img src="' . get_sub_field('icon') . '" alt="' . get_sub_field('title') . '" />';
+			echo '<h3>' . get_sub_field('title') . '</h3>';
+			echo get_sub_field('description');
+			echo '</div>';
+		endwhile;
+	endif;
+
+	//title	
+	if ( get_field('last_section_title', 'options') ) :
+		echo '<h3>' . get_field('last_section_title', 'options') . '</h3>';
 	endif;
 	//content
-	if ( $sec_two_fields['content'] ) :
-		echo $sec_two_fields['content'];
+	if ( get_field('last_section_content', 'options') ) :
+		echo get_field('last_section_content', 'options');
+	endif;
+	//cash pot title	
+	if ( get_field('cash_pot_title', 'options') ) :
+		echo '<span class="cash-pot">' . get_field('cash_pot_title', 'options') . '</span>';
+	endif;
+	//cash pot amount	
+	if ( get_field('cash_pot_amount', 'options') ) :
+		echo '<span class="pot-amount">' . get_field('cash_pot_amount', 'options') . '</span>';
 	endif;
 }
 
-function revcon_print_section_three() {
-	$section_three =  get_field('section_three', 'option');
-	$sec_three_fields = get_fields($section_three->ID);
+function mic_print_footer_options() {
 
-	//icons
-	if ( $sec_three_fields['icon'] ) :
-		echo '<img src="' . $sec_three_fields['icon'] . '" alt="Icon" />';
+	//sitemap
+	if ( get_field('sitemap', 'options') ) :
+		echo '<ul>';
+		while( has_sub_field('sitemap', 'options') ) :
+			echo '<li><a href="' . get_sub_field('page_link', 'options') . '" title="' . get_sub_field('menu_label', 'options') . '">' . get_sub_field('menu_label', 'options') . '</a></li>';
+		endwhile;
 	endif;
-	//titles
-	if ( $sec_three_fields['title'] ) :
-		echo '<h2>' . $sec_three_fields['title']  . '</h2>';
-	endif;
-	//sub headings
-	if ( $sec_three_fields['sub_heading']  ) :
-		echo '<h3>' . $sec_three_fields['sub_heading'] . '</h3>';
-	endif;
-	//content
-	if ( $sec_three_fields['content'] ) :
-		echo $sec_three_fields['content'];
-	endif;
-}
 
-function revcon_print_block_section() {
-	$block_section =  get_field('block', 'option');
-	$block_fields = get_fields($block_section->ID);
+	
+	//address
+	$mic_address = get_field('address', 'options');
+	if ($mic_address) :
+		$mic_a = explode('|', $mic_address);
+		echo '<h3>Address</h3>';
+		echo '<p>' . $mic_a[0] . '<br/>' . $mic_a[1] . '</p>';
+	endif;
 
-	//blocks
-	foreach ($block_fields['blocks'] as $block) {
-		echo '<div class="rev-blocks">';
-		if ( $block['icon'] ) :
-			echo '<img src="' . $block['icon'] . '" alt="Amenities Icon" />';
-		endif;
-		if ( $block['title'] ) :
-			echo '<h3>' . $block['title'] . '</h3>';
-		endif;
-		if ( $block['sentence_or_two'] ) :
-			echo $block['sentence_or_two'];
-		endif;
-		echo '</div>';
-	}
-	//title
-	if ( $block_fields['title'] ) :
-		echo '<h3>' . $block_fields['title'] . '</h3>';
+	//contact
+	$mic_contact = '';
+	$mic_phone = get_field('phone', 'options');
+	if ($mic_phone) :
+		$mic_contact .= $mic_phone . '<br/>';
 	endif;
-	//paragraph
-	if ( $block_fields['paragraph'] ) :
-		echo $block_fields['paragraph'];
+	$mic_email = get_field('email', 'options');
+	if ($mic_email) :
+		$mic_contact .= $mic_email;
 	endif;
-	//cash pot title
-	if ( $block_fields['cash_pot_title'] ) :
-		echo '<h3>' . $block_fields['cash_pot_title'] . '</h3>';
+	if ($mic_email || $mic_phone) :
+		echo '<h3>Contact</h3>';
+		echo '<p>';
+		echo $mic_contact;
+		echo '</p>';
 	endif;
-	//pot amount
-	if ( $block_fields['cash_pot_amount'] ) :
-		echo '<span class="pot-amount">' . $block_fields['cash_pot_amount'] . '</span>';
-	endif;
+
 
 }
 
-function revcon_print_map_section() {
-	$map_page = get_page_by_title('map');
-	$map = get_field('google_map', $map_page->ID);
-	var_dump($map);
+function mic_print_social_icons() {
+
+	//social
+	$mic_social = '';
+	$facebook = get_field('facebook', 'options');
+	if ($facebook) :
+		$mic_social .= '<li><a href="' . $facebook . '" title="Facebook"></a></li>';
+	endif;
+	$twitter = get_field('twitter', 'options');
+	if ($twitter) :
+		$mic_social .= '<li><a href="' . $twitter . '" title="twitter"></a></li>';
+	endif;
+	$pinterest = get_field('pinterest', 'options');
+	if ($pinterest) :
+		$mic_social .= '<li><a href="' . $pinterest . '" title="pinterest"></a></li>';
+	endif;
+	$instagram = get_field('instagram', 'options');
+	if ($instagram) :
+		$mic_social .= '<li><a href="' . $instagram . '" title="instagram"></a></li>';
+	endif;
+
+	if ( $facebook || $twitter || $pinterest || $instagram ) :
+		echo '<ul>';
+		echo $mic_social;
+		echo '</ul>';
+	endif;
+	
+}
+
+
+if ( function_exists('acf_add_options_sub_page') ) {
+	acf_add_options_sub_page( 'Home Page' );
+	acf_add_options_sub_page( 'Google Maps' );
+	acf_add_options_sub_page( 'Footer' );
 }
 
 ?>

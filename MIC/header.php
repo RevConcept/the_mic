@@ -37,9 +37,27 @@
 		<!-- drop Google Analytics Here -->
 		<!-- end analytics -->
 
+		<!-- Google Maps -->
+		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCLmBQMfFI7MgH_u1mk3LcEH03dHB3ijjo&sensor=false"></script>
+		<script>
+			function initialize()
+			{
+			var mapProp = {
+			  center:new google.maps.LatLng(<?php if (get_field( 'latlon', 'options')) : echo get_field('latlon', 'options'); else : echo '17.124714,-61.786423'; endif; ?>),
+			  zoom:<?php if (get_field( 'zoom_level', 'options')) : echo get_field('zoom_level', 'options'); else : echo '12'; endif; ?>,
+			  mapTypeId:google.maps.MapTypeId.ROADMAP
+			  };
+			var map=new google.maps.Map(document.getElementById("googleMap")
+			  ,mapProp);
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+		<!-- end Google Maps -->
+
 	</head>
 
-	<body <?php body_class(); ?>>
+	<body <?php body_class(); ?>  onload="initialize()" >
 
 		<div id="container">
 
