@@ -5,7 +5,7 @@ Web development for The Majestic Isle Casino website.
 
 <-- Backend Setup (Wordpress) -->
 
-Two Options Pages: 
+Three Options Pages: 
 
 1. Home Page -
 	Home Page options are setup into tabs: top section, section two, section three, section four. Each tab has the respective fields for that section, such as image, icon, title, subtitle, content, etc. Section Four is the area on the home page with three columns. This section uses a repeater field for each column. 
