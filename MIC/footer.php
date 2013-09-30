@@ -1,22 +1,40 @@
 			<footer class="footer" role="contentinfo">
+				<div id="foot-wrapper">
 
-				<div id="inner-footer" class="wrap clearfix">
+					<div id="inner-footer" class="wrap clearfix">
 
-					<nav role="navigation">
-							<?php bones_footer_links(); ?>
-					</nav>
+						<nav role="navigation">
+								<?php bones_footer_links(); ?>
+						</nav>
+						<div class="clearfix" id="footer-col-wrap">
 
-					<div id="mic-social">
-						<?php mic_print_social_icons(); ?>
-					</div>
+							<div class="threecol first">				
+								<?php mic_print_sitemap(); ?>
+							</div>
 
-					<div id="footer-options">
-						<?php mic_print_footer_options(); ?>
-					</div>
+							<div class="fourcol">
+								<?php mic_print_addr(); ?>
+							</div>
 
-					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
+							<div class="fivecol last">
+								<h3>Updates from the MIC</h3>
+								<p>Receive regular updates on upcoming events and deals from The MIC.</p>
+								<form action="" method="POST" id="footer-form">
+									<input type="text" name="name" placeholder="your name" />
+									<input type="text" name="email" placeholder="your email" />
+									<input type="submit" value="Submit">
+								</form>
+							</div>
+						</div>
 
-				</div> <!-- end #inner-footer -->
+						
+						<div id="mic-social">
+							<?php mic_print_social_icons(); ?>
+						</div>
+						<p class="source-org copyright">Copyright &copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>. All rights reserved. Site by <a href="">Revelation Concept</a>.</p>
+
+					</div> <!-- end #inner-footer -->
+				</div><!-- end #foot-wrapper -->
 
 			</footer> <!-- end footer -->
 

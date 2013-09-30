@@ -163,10 +163,30 @@ function bones_wpsearch($form) {
 
 function mic_print_top_section() {
 
-	//top section	
-	if ( get_field('top_section_image', 'options') ) :
-		echo '<img src="' . get_field('top_section_image', 'options') . '" alt="Majestic Isle Casino" />';
+	//image	
+    $mic_top_str .= '<div class="top-section-content">';
+	if ( get_field('top_section_image', 'options') ) :		
+		$mic_top_str .= '<div class="image-wrap"><img src="' . get_field('top_section_image', 'options') . '" /></div>';
 	endif;
+	
+	//titles
+	$top_section_title = get_field('top_section_title', 'options');
+	$top_section_subtitle = get_field('top_section_subtitle', 'options');
+	
+		
+	$mic_top_str .= '<div class="title-wrap">';
+		if ( get_field('top_section_title', 'options') ) :
+			$mic_top_str .= '<span class="h1">' . get_field('top_section_title', 'options') . '</span>';
+		endif;
+		//subtitle
+		if ( get_field('top_section_subtitle', 'options') ) :
+			$mic_top_str .= '<span class="subtitle">' . get_field('top_section_subtitle', 'options') . '</span>';
+		endif;
+
+	
+	$mic_top_str .= '<span class="down-arrow"></span></div></div>';
+	echo $mic_top_str;
+
 }
 
 function mic_print_section_two() {
@@ -177,7 +197,7 @@ function mic_print_section_two() {
 	endif;
 	//title	
 	if ( get_field('section_two_title', 'options') ) :
-		echo '<h2>' . get_field('section_two_title', 'options') . '</h2>';
+		echo '<h2 id="antigua">' . get_field('section_two_title', 'options') . '</h2>';
 	endif;
 	//subtitle	
 	if ( get_field('section_two_subtitle', 'options') ) :
@@ -197,7 +217,7 @@ function mic_print_section_three() {
 	endif;
 	//title	
 	if ( get_field('section_three_title', 'options') ) :
-		echo '<h2>' . get_field('section_three_title', 'options') . '</h2>';
+		echo '<h2 id="casino">' . get_field('section_three_title', 'options') . '</h2>';
 	endif;
 	//subtitle	
 	if ( get_field('section_three_subtitle', 'options') ) :
@@ -213,18 +233,21 @@ function mic_print_section_four() {
 
 	//three columns
 	if ( get_field('three_columns', 'options') ) :
+		echo '<div id="three-columns" class="clearfix">';
 		while ( has_sub_field('three_columns', 'options') ) :
-			echo '<div id="three-columns">';
+			$mic_title = get_sub_field('title');
+			echo '<div class="threecol">';
 			echo '<img src="' . get_sub_field('icon') . '" alt="' . get_sub_field('title') . '" />';
-			echo '<h3>' . get_sub_field('title') . '</h3>';
+			echo '<h3 id="' . strtolower(str_replace(' ', '', $mic_title)) . '">' . $mic_title . '<span></span></h3>';
 			echo get_sub_field('description');
 			echo '</div>';
 		endwhile;
+		echo '</div>';
 	endif;
 
 	//title	
 	if ( get_field('last_section_title', 'options') ) :
-		echo '<h3>' . get_field('last_section_title', 'options') . '</h3>';
+		echo '<h3 id="nightlife">' . get_field('last_section_title', 'options') . '<span></span></h3>';
 	endif;
 	//content
 	if ( get_field('last_section_content', 'options') ) :
@@ -236,21 +259,33 @@ function mic_print_section_four() {
 	endif;
 	//cash pot amount	
 	if ( get_field('cash_pot_amount', 'options') ) :
-		echo '<span class="pot-amount">' . get_field('cash_pot_amount', 'options') . '</span>';
+		echo '<span class="pot-amount">$' . get_field('cash_pot_amount', 'options') . '</span>';
 	endif;
 }
 
-function mic_print_footer_options() {
+function mic_print_sitemap() {
 
 	//sitemap
 	if ( get_field('sitemap', 'options') ) :
-		echo '<ul>';
+		$sitemap_str = '<h3>SITEMAP</h3>';
+		$sitemap_str .= '<ul class="nav">';
 		while( has_sub_field('sitemap', 'options') ) :
-			echo '<li><a href="' . get_sub_field('page_link', 'options') . '" title="' . get_sub_field('menu_label', 'options') . '">' . get_sub_field('menu_label', 'options') . '</a></li>';
+			if( get_sub_field('menu_label', 'options') ) :
+				$mic_menu_label = get_sub_field('menu_label', 'options');
+				if(strtolower($mic_menu_label) == 'home') :
+					$mic_menu_class = 'mic-top';
+				else :
+					$mic_menu_class = $mic_menu_label;
+				endif;
+				$sitemap_str .= '<li class="' . strtolower(str_replace(' ', '', $mic_menu_class)) . '"><a href="' . get_sub_field('page_link', 'options') . '" title="' . $mic_menu_label . '">' . $mic_menu_label . '</a></li>';
+			endif;
 		endwhile;
+		$sitemap_str .= '</ul>';
+		echo $sitemap_str;
 	endif;
+}
+function mic_print_addr() {
 
-	
 	//address
 	$mic_address = get_field('address', 'options');
 	if ($mic_address) :
@@ -275,8 +310,6 @@ function mic_print_footer_options() {
 		echo $mic_contact;
 		echo '</p>';
 	endif;
-
-
 }
 
 function mic_print_social_icons() {
@@ -285,30 +318,30 @@ function mic_print_social_icons() {
 	$mic_social = '';
 	$facebook = get_field('facebook', 'options');
 	if ($facebook) :
-		$mic_social .= '<li><a href="' . $facebook . '" title="Facebook"></a></li>';
+		$mic_social .= '<li><a class="facebook" href="' . $facebook . '" title="Facebook" target="_blank"></a></li>';
 	endif;
 	$twitter = get_field('twitter', 'options');
 	if ($twitter) :
-		$mic_social .= '<li><a href="' . $twitter . '" title="twitter"></a></li>';
+		$mic_social .= '<li><a class="twitter"  href="' . $twitter . '" title="twitter" target="_blank"></a></li>';
 	endif;
 	$pinterest = get_field('pinterest', 'options');
 	if ($pinterest) :
-		$mic_social .= '<li><a href="' . $pinterest . '" title="pinterest"></a></li>';
+		$mic_social .= '<li><a class="pinterest"  href="' . $pinterest . '" title="pinterest" target="_blank"></a></li>';
 	endif;
 	$instagram = get_field('instagram', 'options');
 	if ($instagram) :
-		$mic_social .= '<li><a href="' . $instagram . '" title="instagram"></a></li>';
+		$mic_social .= '<li><a class="instagram"  href="' . $instagram . '" title="instagram" target="_blank"></a></li>';
 	endif;
 
 	if ( $facebook || $twitter || $pinterest || $instagram ) :
-		echo '<ul>';
+		echo '<ul class="social">';
 		echo $mic_social;
 		echo '</ul>';
 	endif;
 	
 }
 
-
+//add options pages for advanced custom fields
 if ( function_exists('acf_add_options_sub_page') ) {
 	acf_add_options_sub_page( 'Home Page' );
 	acf_add_options_sub_page( 'Google Maps' );

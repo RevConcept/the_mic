@@ -82,17 +82,18 @@ TYPOGRAPHY
 	http://www.fontsquirrel.com/
 	Be sure to remove the comment brackets.
 */
-/*	@font-face {
-    	font-family: 'Font Name';
-    	src: url('library/fonts/font-name.eot');
-    	src: url('library/fonts/font-name.eot?#iefix') format('embedded-opentype'),
-             url('library/fonts/font-name.woff') format('woff'),
-             url('library/fonts/font-name.ttf') format('truetype'),
-             url('library/fonts/font-name.svg#font-name') format('svg');
-    	font-weight: normal;
-    	font-style: normal;
-	}
-*/
+@font-face {
+  font-family: 'DP';
+  src: url("../font/daunpenh.eot");
+  src: url("../font/daunpenh.eot?#iefix") format("embedded-opentype"), url("../font/daunpenh.woff") format("woff"), url("../font/daunpenh.ttf") format("truetype"), url("../font/daunpenh.svg#daunpenh") format("svg");
+}
+
+@font-face {
+  font-family: 'GVreg';
+  src: url("../font/GreatVibes-Regular.eot");
+  src: url("../font/GreatVibes-Regular.eot?#iefix") format("embedded-opentype"), url("../font/GreatVibes-Regular.woff") format("woff"), url("../font/GreatVibes-Regular.ttf") format("truetype"), url("../font/GreatVibes-Regular.svg#GreatVibes-Regular") format("svg");
+}
+
 /*
 use the best ampersand
 http://simplebits.com/notebook/2008/08/14/ampersands-2/
@@ -155,6 +156,8 @@ Be careful with these since they can
 really slow down your CSS. Don't overdo it.
 *********************/
 /* @include css-gradient(#dfdfdf,#f8f8f8); */
+/* .boxShadow(0,0,4px,0,#444); */
+/* .boxShadow(none); */
 /*********************
 BOX SIZING
 *********************/
@@ -350,6 +353,34 @@ upon your base.scss styles.
 
 ******************************************************************/
 /*********************
+HEADER
+*********************/
+.header .inner-nav {
+  margin-top: 135px;
+}
+
+#mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 125px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 5px solid #ede2c6;
+  border-top: 15px solid #ede2c6;
+  margin-top: 10px;
+}
+#mobile-nav .logo {
+  background: url(../images/logo.png) no-repeat;
+  width: 274px;
+  height: 75px;
+  max-width: 274px;
+}
+#mobile-nav .logo img {
+  display: none;
+}
+
+/*********************
 NAVIGATION STYLES
 *********************/
 /* .menu is clearfixed inside mixins.scss */
@@ -377,6 +408,118 @@ NAVIGATION STYLES
 /*********************
 POSTS & CONTENT STYLES
 *********************/
+#top-section-wrap {
+  background: url(../images/intro-768.jpg) no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  min-height: 1024px;
+}
+
+#top-section {
+  z-index: 0;
+}
+#top-section .inner-top-section {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  display: block;
+  height: 400px;
+  margin: -800px auto 0;
+  padding: 20px;
+  width: 400px;
+}
+#top-section .top-section-content {
+  background: #FFFFFF;
+  border-radius: 50% 50% 50% 50%;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  padding: 40px 20px 0 40px;
+}
+#top-section .image-wrap {
+  position: absolute;
+}
+#top-section .image-wrap img {
+  max-width: 280px;
+  max-height: 247px;
+}
+#top-section .title-wrap {
+  position: absolute;
+  top: 120px;
+  left: 60px;
+  display: none;
+}
+#top-section .title-wrap .h1 {
+  font-family: DP, "Georgia", Cambria, Times New Roman, Times, serif;
+  font-size: 50px;
+  line-height: 60px;
+  color: #d1a645;
+  font-weight: normal;
+  text-transform: uppercase;
+  background: url(../images/symbol-sprite.gif) no-repeat center bottom;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  display: block;
+}
+#top-section .title-wrap .subtitle {
+  font-family: GVreg, "Georgia", Cambria, Times New Roman, Times, serif;
+  color: #d1a745;
+  font-size: 30px;
+  line-height: 36px;
+  margin-bottom: 50px;
+  font-weight: 100;
+  display: block;
+}
+#top-section .title-wrap .down-arrow {
+  display: block;
+  background: url(../images/arrow-dwn.png) no-repeat center center;
+  height: 24px;
+  cursor: pointer;
+}
+
+.section-wrapper {
+  background: url(../images/antigua-bg-768.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.main-section {
+  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.85);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#D9FFFFFF,endColorstr=#D9FFFFFF);
+  zoom: 1;
+  text-align: center;
+  color: #d1a645;
+}
+
+#section-four-wrap .section-four .pot-amount {
+  font-size: 100px;
+}
+
+#window1 {
+  background: url(../images/window1-768.jpg) no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 406px;
+  position: relative;
+  z-index: -1;
+  margin-top: -10px;
+  height: 649px;
+}
+
+#window2 {
+  background: url(../images/window2-768.jpg) no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 406px;
+  position: relative;
+  z-index: -1;
+  margin-top: -10px;
+  height: 649px;
+}
+
 /* entry content */
 .entry-content {
   /* at this larger size, we can start to align images */
@@ -402,6 +545,18 @@ POSTS & CONTENT STYLES
 /*********************
 FOOTER STYLES
 *********************/
+#footer-form input {
+  margin: 15px 0;
+}
+
+.copyright {
+  float: right;
+}
+
+#mic-social {
+  float: left;
+}
+
 /*
 check your menus here. do they look good?
 do they need tweaking?
@@ -433,33 +588,29 @@ LAYOUT & GRID STYLES
 /*********************
 HEADER STYLES
 *********************/
+.header #nav-wrapper .inner-nav {
+  z-index: 999;
+}
+
 /*********************
 NAVIGATION STYLES
 *********************/
 .nav {
-  background: #eee;
-  border: 0;
   /* end .menu ul li */
   /* highlight current page */
   /* end current highlighters */
 }
 .nav li {
-  float: left;
-  position: relative;
   /*
   plan your menus and drop-downs wisely.
   */
   /* showing sub-menus */
 }
 .nav li a {
-  border-bottom: 0;
   /*
   you can use hover styles here even though this size
   has the possibility of being a mobile device.
   */
-}
-.nav li a:hover, .nav li a:focus {
-  background-color: #dedede;
 }
 .nav li ul.sub-menu,
 .nav li ul.children {
@@ -500,6 +651,47 @@ NAVIGATION STYLES
 /*********************
 SIDEBARS & ASIDES
 *********************/
+#top-section-wrap {
+  background: url(../images/intro.jpg) no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  min-height: 1084px;
+}
+
+.section-wrapper {
+  background: url(../images/antigua-bg.jpg) no-repeat center;
+  background-size: cover;
+}
+
+#window1 {
+  background: url(../images/window1.jpg) no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 768px;
+  position: relative;
+  z-index: -1;
+  margin-top: -10px;
+}
+
+#window2 {
+  background: url(../images/window2.jpg) no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 768px;
+  position: relative;
+  z-index: -1;
+  margin-top: -10px;
+}
+
+#three-columns {
+  margin: 0 auto;
+  padding: 20px;
+}
+#three-columns .threecol {
+  width: 30%;
+}
+
 .sidebar {
   margin-top: 2.2em;
 }

@@ -58,16 +58,32 @@
 	</head>
 
 	<body <?php body_class(); ?>  onload="initialize()" >
+		<div id="preloader">
+			<div id="status">
+			</div>
+		</div>
 
-		<div id="container">
+		<div id="container" id="mic-top">
 
 			<header class="header" role="banner">
 
 				<div id="inner-header" class="wrap clearfix">
 
-					<nav role="navigation">
-						<?php bones_main_nav(); ?>
-					</nav>
+					<div id="nav-wrapper">
+
+						<div id="mobile-nav" class="clearfix">
+							<a class="logo" href="<?php echo site_url(); ?>">
+								<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo_med.png" alt="The Majestic Isle Casino" /></a>
+							<a class="mobile-menu" alt="Menu"><img src="<?php echo get_template_directory_uri(); ?>/library/images/mobile-menu.png" alt="Menu" />
+								</a>
+						</div>
+
+						<div class="inner-nav">
+							<nav role="navigation">
+								<?php bones_main_nav(); ?>
+							</nav>
+						</div>
+					</div>
 
 				</div> <!-- end #inner-header -->
 

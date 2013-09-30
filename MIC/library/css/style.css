@@ -589,17 +589,18 @@ TYPOGRAPHY
 	http://www.fontsquirrel.com/
 	Be sure to remove the comment brackets.
 */
-/*	@font-face {
-    	font-family: 'Font Name';
-    	src: url('library/fonts/font-name.eot');
-    	src: url('library/fonts/font-name.eot?#iefix') format('embedded-opentype'),
-             url('library/fonts/font-name.woff') format('woff'),
-             url('library/fonts/font-name.ttf') format('truetype'),
-             url('library/fonts/font-name.svg#font-name') format('svg');
-    	font-weight: normal;
-    	font-style: normal;
-	}
-*/
+@font-face {
+  font-family: 'DP';
+  src: url("../font/daunpenh.eot");
+  src: url("../font/daunpenh.eot?#iefix") format("embedded-opentype"), url("../font/daunpenh.woff") format("woff"), url("../font/daunpenh.ttf") format("truetype"), url("../font/daunpenh.svg#daunpenh") format("svg");
+}
+
+@font-face {
+  font-family: 'GVreg';
+  src: url("../font/GreatVibes-Regular.eot");
+  src: url("../font/GreatVibes-Regular.eot?#iefix") format("embedded-opentype"), url("../font/GreatVibes-Regular.woff") format("woff"), url("../font/GreatVibes-Regular.ttf") format("truetype"), url("../font/GreatVibes-Regular.svg#GreatVibes-Regular") format("svg");
+}
+
 /*
 use the best ampersand
 http://simplebits.com/notebook/2008/08/14/ampersands-2/
@@ -662,6 +663,8 @@ Be careful with these since they can
 really slow down your CSS. Don't overdo it.
 *********************/
 /* @include css-gradient(#dfdfdf,#f8f8f8); */
+/* .boxShadow(0,0,4px,0,#444); */
+/* .boxShadow(none); */
 /*********************
 BOX SIZING
 *********************/
@@ -815,7 +818,7 @@ style a page via class
 LAYOUT & GRID STYLES
 *********************/
 .wrap {
-  width: 96%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -887,6 +890,53 @@ h5, .h5 {
 /*********************
 HEADER STYLES
 *********************/
+#preloader {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #632c55;
+}
+#preloader #status {
+  background: url(../images/loading.gif) no-repeat center center;
+  height: 64px;
+  width: 92px;
+  margin: 45% auto;
+}
+
+.header .nav li.mic-top {
+  display: none;
+}
+
+#mobile-nav {
+  border-bottom: 5px solid #ede2c6;
+  -webkit-box-shadow: 0 5px 7px #cccccc;
+  -moz-box-shadow: 0 5px 7px #cccccc;
+  box-shadow: 0 5px 7px #cccccc;
+}
+#mobile-nav .logo {
+  max-width: 200px;
+  float: left;
+  margin: 2%;
+  display: block;
+}
+#mobile-nav .logo img {
+  width: 100%;
+}
+#mobile-nav .mobile-menu {
+  width: 38px;
+  float: right;
+  margin: 5%;
+  display: block;
+  max-width: 38px;
+  cursor: pointer;
+}
+#mobile-nav .mobile-menu img {
+  width: 100%;
+}
+
 /*********************
 NAVIGATION STYLES
 *********************/
@@ -898,8 +948,10 @@ the navs on the site so our css is cleaner
 and more scalable.
 */
 .nav {
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   border-bottom: 0;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
   /* end .menu li */
   /* highlight current page */
   /* end current highlighters */
@@ -917,14 +969,26 @@ and more scalable.
   display: block;
   text-decoration: none;
   padding: 10px 10px;
-  background-color: #eee;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #d1a745;
+  text-align: center;
+  color: #d1a745;
   /*
   remember this is for mobile ONLY, so there's no need
   to even declare hover styles here, you can do it in
   the style.scss file where it's relevant. We want to
   keep this file as small as possible!
   */
+}
+.nav li a:hover, .nav li a:focus {
+  color: #b68d2d;
+  border-bottom: 1px solid #b68d2d;
+  -webkit-transition: all 0.2s ease-in-out;
+  -transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.nav li a:active {
+  color: #dbba6e;
+  border-bottom: 1px solid #dbba6e;
 }
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
@@ -935,8 +999,134 @@ and more scalable.
 /*********************
 POSTS & CONTENT STYLES
 *********************/
-#content {
-  margin-top: 2.2em;
+#top-section-wrap {
+  background: url(../images/intro-481.jpg) no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  min-height: 406px;
+}
+#top-section-wrap .inner-top-section {
+  display: none;
+}
+
+.section-wrapper {
+  background: url(../images/antigua-bg-481.jpg) no-repeat center center;
+  background-size: cover;
+  margin: 10px 0;
+}
+
+.main-section {
+  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.85);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#D9FFFFFF,endColorstr=#D9FFFFFF);
+  zoom: 1;
+  text-align: center;
+  margin: 10px 0 20px;
+  color: #d1a645;
+  padding: 10% 10% 30%;
+  border-top: 10px solid #EDE2C6;
+  border-bottom: 10px solid #EDE2C6;
+}
+.main-section h2 {
+  font-family: DP, "Georgia", Cambria, Times New Roman, Times, serif;
+  font-size: 50px;
+  line-height: 60px;
+  color: #d1a645;
+  font-weight: normal;
+  text-transform: uppercase;
+  background: url(../images/symbol-sprite.gif) no-repeat center bottom;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+.main-section .subtitle {
+  font-family: GVreg, "Georgia", Cambria, Times New Roman, Times, serif;
+  color: #d1a745;
+  font-size: 30px;
+  line-height: 36px;
+  margin-bottom: 50px;
+  font-weight: 100;
+  display: block;
+}
+.main-section p {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #a98745;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 100;
+}
+
+#window1 {
+  margin-top: -10px;
+  background: url(../images/window1-481.jpg) no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 406px;
+  z-index: -1;
+  -webkit-box-shadow: inset 0 0 20px #333333;
+  -moz-box-shadow: inset 0 0 20px #333333;
+  box-shadow: inset 0 0 20px #333333;
+}
+
+#window2 {
+  margin-top: -10px;
+  background: url(../images/window2-481.jpg) no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 406px;
+  z-index: -1;
+}
+
+#section-four-wrap {
+  background: #d1a745;
+  padding: 10px 0;
+}
+#section-four-wrap .section-four {
+  border-top: 10px solid #EDE2C6;
+  border-bottom: 10px solid #EDE2C6;
+  padding: 5% 0 10%;
+  text-align: center;
+  color: #fff;
+}
+#section-four-wrap .section-four h3 {
+  font-family: DP, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+#section-four-wrap .section-four h3 span {
+  display: block;
+  margin-top: 10px;
+  background: url(../images/symbol.gif) no-repeat center top;
+  height: 14px;
+}
+#section-four-wrap .section-four p {
+  font-family: "Open Sans", "Georgia", Cambria, Times New Roman, Times, serif;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 40px;
+}
+#section-four-wrap .section-four #three-columns {
+  margin: 0 auto;
+  padding: 20px;
+}
+#section-four-wrap .section-four .cash-pot {
+  font-family: GVreg, "Georgia", Cambria, Times New Roman, Times, serif;
+  display: block;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 100;
+  margin: 50px 0;
+}
+#section-four-wrap .section-four .pot-amount {
+  display: inline-block;
+  font-family: DP, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 60px;
+  line-height: 70px;
+  padding: 35px 10% 0;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
 }
 
 /* end .hentry */
@@ -1248,6 +1438,110 @@ FOOTER STYLES
 .footer {
   clear: both;
 }
+.footer #inner-footer {
+  padding: 5%;
+}
+.footer #foot-wrapper {
+  background: #632c55;
+  color: #fff;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 100;
+}
+.footer #foot-wrapper .nav li a {
+  border: none;
+  text-align: left;
+  padding: 0;
+  text-decoration: none;
+  text-transform: none;
+  color: #fff;
+}
+.footer #foot-wrapper .nav li a:hover, .footer #foot-wrapper .nav li a:focus, .footer #foot-wrapper .nav li a:active {
+  color: #EDE2C6;
+  -webkit-transition: all 0.2s ease-in-out;
+  -transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.footer #foot-wrapper h3 {
+  font-size: 15px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#mic-social ul.social li {
+  display: inline-block;
+  padding: 5px;
+}
+#mic-social ul.social li a {
+  height: 36px;
+  width: 37px;
+  display: block;
+  background: url(../images/social-sprite.png) no-repeat;
+  overflow: hidden;
+}
+#mic-social ul.social li a.facebook {
+  background-position: left bottom;
+}
+#mic-social ul.social li a.facebook:hover, #mic-social ul.social li a.facebook:focus, #mic-social ul.social li a.facebook:active {
+  background-position: left top;
+}
+#mic-social ul.social li a.twitter {
+  background-position: -45px bottom;
+}
+#mic-social ul.social li a.twitter:hover, #mic-social ul.social li a.twitter:focus, #mic-social ul.social li a.twitter:active {
+  background-position: -45px top;
+}
+#mic-social ul.social li a.pinterest {
+  background-position: -90px bottom;
+}
+#mic-social ul.social li a.pinterest:hover, #mic-social ul.social li a.pinterest:focus, #mic-social ul.social li a.pinterest:active {
+  background-position: -90px top;
+}
+#mic-social ul.social li a.instagram {
+  background-position: -135px bottom;
+}
+#mic-social ul.social li a.instagram:hover, #mic-social ul.social li a.instagram:focus, #mic-social ul.social li a.instagram:active {
+  background-position: -135px top;
+}
+
+#footer-col-wrap {
+  margin-bottom: 1%;
+}
+
+#footer-form input {
+  padding: 7px 10px;
+  display: block;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  border: 0;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 15px auto;
+  font-size: 14px;
+}
+#footer-form input[type=text] {
+  background: #48203e;
+  width: 75%;
+  font-style: italic;
+  font-weight: 100;
+  color: #fff;
+}
+#footer-form input[type=submit] {
+  color: #632c55;
+  background: #e0d5dd;
+  text-transform: uppercase;
+  padding: 7px 20px;
+  font-weight: 600;
+}
+#footer-form input[type=submit]:hover, #footer-form input[type=submit]:focus, #footer-form input[type=submit]:active {
+  background: #fff;
+  -webkit-transition: all 0.2s ease-in-out;
+  -transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
 
 /*
 if you checked out the link above:
@@ -1259,6 +1553,25 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
+.copyright {
+  font-size: 12px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 16px;
+  font-style: italic;
+  font-weight: 100;
+  padding: 25px 10px;
+}
+.copyright a {
+  color: #fff;
+  text-decoration: none;
+}
+.copyright a:hover, .copyright a:focus, .copyright a:active {
+  color: #EDE2C6;
+  -webkit-transition: all 0.2s ease-in-out;
+  -transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
 #googleMap {
   width: 100%;
   height: 380px;
@@ -1288,6 +1601,34 @@ tweeners.
   
   ******************************************************************/
   /*********************
+  HEADER
+  *********************/
+  .header .inner-nav {
+    margin-top: 135px;
+  }
+
+  #mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 125px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 5px solid #ede2c6;
+    border-top: 15px solid #ede2c6;
+    margin-top: 10px;
+  }
+  #mobile-nav .logo {
+    background: url(../images/logo.png) no-repeat;
+    width: 274px;
+    height: 75px;
+    max-width: 274px;
+  }
+  #mobile-nav .logo img {
+    display: none;
+  }
+
+  /*********************
   NAVIGATION STYLES
   *********************/
   /* .menu is clearfixed inside mixins.scss */
@@ -1315,6 +1656,118 @@ tweeners.
   /*********************
   POSTS & CONTENT STYLES
   *********************/
+  #top-section-wrap {
+    background: url(../images/intro-768.jpg) no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    min-height: 1024px;
+  }
+
+  #top-section {
+    z-index: 0;
+  }
+  #top-section .inner-top-section {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    height: 400px;
+    margin: -800px auto 0;
+    padding: 20px;
+    width: 400px;
+  }
+  #top-section .top-section-content {
+    background: #FFFFFF;
+    border-radius: 50% 50% 50% 50%;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding: 40px 20px 0 40px;
+  }
+  #top-section .image-wrap {
+    position: absolute;
+  }
+  #top-section .image-wrap img {
+    max-width: 280px;
+    max-height: 247px;
+  }
+  #top-section .title-wrap {
+    position: absolute;
+    top: 120px;
+    left: 60px;
+    display: none;
+  }
+  #top-section .title-wrap .h1 {
+    font-family: DP, "Georgia", Cambria, Times New Roman, Times, serif;
+    font-size: 50px;
+    line-height: 60px;
+    color: #d1a645;
+    font-weight: normal;
+    text-transform: uppercase;
+    background: url(../images/symbol-sprite.gif) no-repeat center bottom;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    display: block;
+  }
+  #top-section .title-wrap .subtitle {
+    font-family: GVreg, "Georgia", Cambria, Times New Roman, Times, serif;
+    color: #d1a745;
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 50px;
+    font-weight: 100;
+    display: block;
+  }
+  #top-section .title-wrap .down-arrow {
+    display: block;
+    background: url(../images/arrow-dwn.png) no-repeat center center;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .section-wrapper {
+    background: url(../images/antigua-bg-768.jpg) no-repeat center center;
+    background-size: cover;
+  }
+
+  .main-section {
+    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.85);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#D9FFFFFF,endColorstr=#D9FFFFFF);
+    zoom: 1;
+    text-align: center;
+    color: #d1a645;
+  }
+
+  #section-four-wrap .section-four .pot-amount {
+    font-size: 100px;
+  }
+
+  #window1 {
+    background: url(../images/window1-768.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 406px;
+    position: relative;
+    z-index: -1;
+    margin-top: -10px;
+    height: 649px;
+  }
+
+  #window2 {
+    background: url(../images/window2-768.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 406px;
+    position: relative;
+    z-index: -1;
+    margin-top: -10px;
+    height: 649px;
+  }
+
   /* entry content */
   .entry-content {
     /* at this larger size, we can start to align images */
@@ -1340,11 +1793,69 @@ tweeners.
   /*********************
   FOOTER STYLES
   *********************/
+  #footer-form input {
+    margin: 15px 0;
+  }
+
+  .copyright {
+    float: right;
+  }
+
+  #mic-social {
+    float: left;
+  }
+
   /*
   check your menus here. do they look good?
   do they need tweaking?
   */
   /* end .footer-links */
+}
+@media only screen and (min-width: 600px) {
+  .header #nav-wrapper .inner-nav {
+    position: fixed;
+    width: 100%;
+    margin-top: 100px;
+    left: 0;
+    top: 20px;
+    z-index: 999;
+  }
+  .header .nav {
+    text-align: center;
+    max-width: 1140px;
+    margin: 10px auto;
+  }
+  .header .nav li {
+    display: inline-block;
+    margin: 0 2%;
+  }
+  .header .nav li a {
+    border-bottom: 0;
+    padding: 10px 0;
+  }
+  .header .nav li a:hover, .header .nav li a:focus {
+    color: #d1a645;
+    border-bottom: 3px solid #d1a645;
+    -webkit-transition: all 0.2s ease-in-out;
+    -transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+  .header .nav li a:active {
+    color: #dbba6e;
+    border-bottom: 3px solid #dbba6e;
+  }
+
+  #mobile-nav {
+    height: 180px;
+    z-index: 999;
+  }
+  #mobile-nav .logo {
+    margin: 10px auto;
+    float: none;
+  }
+  #mobile-nav .mobile-menu {
+    display: none;
+  }
 }
 /*
 TABLET & SMALLER LAPTOPS
@@ -1475,33 +1986,29 @@ you can add resource intensive styles.
   /*********************
   HEADER STYLES
   *********************/
+  .header #nav-wrapper .inner-nav {
+    z-index: 999;
+  }
+
   /*********************
   NAVIGATION STYLES
   *********************/
   .nav {
-    background: #eee;
-    border: 0;
     /* end .menu ul li */
     /* highlight current page */
     /* end current highlighters */
   }
   .nav li {
-    float: left;
-    position: relative;
     /*
     plan your menus and drop-downs wisely.
     */
     /* showing sub-menus */
   }
   .nav li a {
-    border-bottom: 0;
     /*
     you can use hover styles here even though this size
     has the possibility of being a mobile device.
     */
-  }
-  .nav li a:hover, .nav li a:focus {
-    background-color: #dedede;
   }
   .nav li ul.sub-menu,
   .nav li ul.children {
@@ -1542,6 +2049,47 @@ you can add resource intensive styles.
   /*********************
   SIDEBARS & ASIDES
   *********************/
+  #top-section-wrap {
+    background: url(../images/intro.jpg) no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    min-height: 1084px;
+  }
+
+  .section-wrapper {
+    background: url(../images/antigua-bg.jpg) no-repeat center;
+    background-size: cover;
+  }
+
+  #window1 {
+    background: url(../images/window1.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 768px;
+    position: relative;
+    z-index: -1;
+    margin-top: -10px;
+  }
+
+  #window2 {
+    background: url(../images/window2.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 768px;
+    position: relative;
+    z-index: -1;
+    margin-top: -10px;
+  }
+
+  #three-columns {
+    margin: 0 auto;
+    padding: 20px;
+  }
+  #three-columns .threecol {
+    width: 30%;
+  }
+
   .sidebar {
     margin-top: 2.2em;
   }
@@ -1592,6 +2140,63 @@ you can add resource intensive styles.
   }
 
   /* end .footer-links */
+}
+@media only screen and (min-width: 840px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 140px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 3px solid #ede2c6;
+    border-top: 15px solid #ede2c6;
+    margin-top: 10px;
+    z-index: 999;
+    -webkit-box-shadow: 0 5px 7px #999999;
+    -moz-box-shadow: 0 5px 7px #999999;
+    box-shadow: 0 5px 7px #999999;
+  }
+  .header #nav-wrapper .inner-nav {
+    margin: 0;
+  }
+  .header .nav {
+    height: 75px;
+  }
+  .header .nav li {
+    vertical-align: bottom;
+  }
+  .header .nav li a {
+    height: 75px;
+    padding-top: 45px;
+  }
+  .header .nav li.mic-top {
+    display: inline-block;
+  }
+  .header .nav li.mic-top a {
+    background: url(../images/logo_med.png) no-repeat center 10px;
+    width: 200px;
+    height: 75px;
+    text-indent: -9000px;
+    overflow: visible;
+  }
+  .header .nav li.mic-top a:hover, .header .nav li.mic-top a:focus, .header .nav li.mic-top a:active {
+    border-bottom: 0;
+  }
+
+  #mobile-nav {
+    display: none;
+  }
+}
+@media only screen and (min-width: 940px) {
+  .header .nav {
+    height: 100px;
+  }
+  .header .nav li.mic-top a {
+    background: url(../images/logo.png) no-repeat;
+    width: 274px;
+    height: 82px;
+  }
 }
 /*
 DESKTOP

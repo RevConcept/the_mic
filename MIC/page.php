@@ -2,50 +2,42 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="wrap clearfix">
+				<div id="inner-content" class=" clearfix">
 
-						<div id="main" class="eightcol first clearfix" role="main">
-
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+						<div id="main" class=" clearfix" role="main">
 
 								<?php if ( is_front_page() || is_home() ) : ?>
 
-									<!-- top section -->
-									<div id="top-section">
-										<?php mic_print_top_section(); ?>
-									</div>
+									<?php get_template_part('mic-home'); ?>
+									
+								<?php else: ?>
 
-									<!-- section two -->
-									<div id="section-two">
-										<?php mic_print_section_two(); ?>
-									</div>
+								<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-									<div id="window1">
-									</div>
+									<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-									<!-- section three -->
-									<div id="section-three">
-										<?php mic_print_section_three(); ?>
-									</div>
+										<header class="article-header">
 
-									<div id="window2">
-									</div>
+											<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+											<p class="byline vcard"><?php
+												printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>.', 'bonestheme' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'bonestheme' ) ), bones_get_the_author_posts_link());
+											?></p>
 
-									<!-- section four -->
-									<div id="section-four">
-										<?php mic_print_section_four(); ?>
-									</div>
 
-									<div id="map-section" >
-										<div id="googleMap" style="width:100%;height:380px;"></div>
-									</div>
-								<?php endif; ?>
+										</header> <!-- end article header -->
 
-								
+										<section class="entry-content clearfix" itemprop="articleBody">
+											<?php the_content(); ?>
+									</section> <!-- end article section -->
 
-							</article> <!-- end article -->
+										<footer class="article-footer">
+											<?php the_tags( '<span class="tags">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '' ); ?>
+
+										</footer> <!-- end article footer -->
+
+										<?php comments_template(); ?>
+
+									</article> <!-- end article -->
 
 							<?php endwhile; else : ?>
 
@@ -64,6 +56,9 @@
 							<?php endif; ?>
 
 						</div> <!-- end #main -->
+
+						<?php get_sidebar(); ?>
+					<?php endif; //end else ?>
 
 				</div> <!-- end #inner-content -->
 
