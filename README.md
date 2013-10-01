@@ -20,8 +20,9 @@ Three Options Pages:
 Functions (functions.php):
 
 1. mic_print_top_section()
-2. mic_print_section_two()
+2. mic_print_section_two() 
 3. mic_print_section_three()
 4. mic_print_section_four()
-5. mic_print_footer_options()
-6. mic_print_social_icons()
+5. mic_print_sitemap()
+6. mic_print_addr()
+7. mic_print_social_icons()
