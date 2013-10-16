@@ -1,11 +1,7 @@
 			<footer class="footer" role="contentinfo">
-				<div id="foot-wrapper">
 
 					<div id="inner-footer" class="wrap clearfix">
 
-						<nav role="navigation">
-								<?php bones_footer_links(); ?>
-						</nav>
 						<div class="clearfix" id="footer-col-wrap">
 
 							<div class="threecol first">				
@@ -20,14 +16,13 @@
 								<h3>Updates from the MIC</h3>
 								<p>Receive regular updates on upcoming events and deals from The MIC.</p>
 								<form action="" method="POST" id="footer-form">
-									<input type="text" name="name" placeholder="your name" />
-									<input type="text" name="email" placeholder="your email" />
-									<input type="submit" value="Submit">
+									<input type="text" name="name" placeholder="your name" class="ie-lameness"/>
+									<input type="text" name="email" placeholder="your email" class="ie-lameness"/>
+									<input type="submit" value="Submit" class="ie-lameness">
 								</form>
 							</div>
 						</div>
 
-						
 						<div id="mic-social">
 							<?php mic_print_social_icons(); ?>
 						</div>

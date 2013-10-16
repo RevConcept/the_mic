@@ -1,3 +1,4 @@
+
 <!doctype html>
 
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -55,11 +56,16 @@
 		</script>
 		<!-- end Google Maps -->
 
+		<!--[if IE]>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/library/js/libs/PIE.js"></script>
+		<![endif]-->
+
 	</head>
 
-	<body <?php body_class(); ?>  onload="initialize()" >
+	<body <?php body_class(); ?> >
 		<div id="preloader">
 			<div id="status">
+				<img src="<?php echo get_template_directory_uri(); ?>/library/images/loading.gif" alt="loading" />
 			</div>
 		</div>
 
@@ -69,21 +75,21 @@
 
 				<div id="inner-header" class="wrap clearfix">
 
-					<div id="nav-wrapper">
+					<div class="inner-top clearfix">
+							<a id="logo" href="<?php echo home_url(); ?>" rel="nofollow">
+								<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo.png" alt="The Majestic Isle Casino" />
+							</a>
+							<a id="mobile-menu" id="mobile-menu" onclick="mic.show_header_menu()">
+								<img src="<?php echo get_template_directory_uri(); ?>/library/images/mobile-menu.png" alt="Menu" />
+							</a>
+					</div> <?php //end .inner-top ?>
 
-						<div id="mobile-nav" class="clearfix">
-							<a class="logo" href="<?php echo site_url(); ?>">
-								<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo_med.png" alt="The Majestic Isle Casino" /></a>
-							<a class="mobile-menu" alt="Menu"><img src="<?php echo get_template_directory_uri(); ?>/library/images/mobile-menu.png" alt="Menu" />
-								</a>
-						</div>
-
-						<div class="inner-nav">
-							<nav role="navigation">
-								<?php bones_main_nav(); ?>
-							</nav>
-						</div>
+					<div class="header-nav-wrapper">
+						<nav role="navigation">
+							<?php bones_main_nav(); ?>
+						</nav>
 					</div>
+					
 
 				</div> <!-- end #inner-header -->
 

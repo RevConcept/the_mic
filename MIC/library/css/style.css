@@ -590,15 +590,19 @@ TYPOGRAPHY
 	Be sure to remove the comment brackets.
 */
 @font-face {
-  font-family: 'DP';
-  src: url("../font/daunpenh.eot");
-  src: url("../font/daunpenh.eot?#iefix") format("embedded-opentype"), url("../font/daunpenh.woff") format("woff"), url("../font/daunpenh.ttf") format("truetype"), url("../font/daunpenh.svg#daunpenh") format("svg");
+  font-family: 'daunpenh';
+  src: url("../fonts/daunpenh.eot");
+  src: url("../fonts/daunpenh.eot?#iefix") format("embedded-opentype"), url("../fonts/daunpenh.woff") format("woff"), url("../fonts/daunpenh.ttf") format("truetype"), url("../fonts/daunpenh.svg#daunpenh") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'GVreg';
-  src: url("../font/GreatVibes-Regular.eot");
-  src: url("../font/GreatVibes-Regular.eot?#iefix") format("embedded-opentype"), url("../font/GreatVibes-Regular.woff") format("woff"), url("../font/GreatVibes-Regular.ttf") format("truetype"), url("../font/GreatVibes-Regular.svg#GreatVibes-Regular") format("svg");
+  font-family: 'GreatVibes';
+  src: url("../fonts/GreatVibes-Regular.eot");
+  src: url("../fonts/GreatVibes-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/GreatVibes-Regular.woff") format("woff"), url("../fonts/GreatVibes-Regular.ttf") format("truetype"), url("../fonts/GreatVibes-Regular.svg#GreatVibes-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /*
@@ -663,8 +667,6 @@ Be careful with these since they can
 really slow down your CSS. Don't overdo it.
 *********************/
 /* @include css-gradient(#dfdfdf,#f8f8f8); */
-/* .boxShadow(0,0,4px,0,#444); */
-/* .boxShadow(none); */
 /*********************
 BOX SIZING
 *********************/
@@ -769,10 +771,26 @@ and will be used across all viewports.
 GENERAL STYLES
 *********************/
 body {
-  font-family: "Georgia", Cambria, Times New Roman, Times, serif;
-  font-size: 100%;
-  line-height: 1.5;
-  color: #565656;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 30px;
+  color: #a98945;
+  font-weight: 100;
+}
+
+#preloader {
+  background: #632c55;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+#status {
+  text-align: center;
+  margin-top: 200px;
 }
 
 /********************
@@ -818,7 +836,7 @@ style a page via class
 LAYOUT & GRID STYLES
 *********************/
 .wrap {
-  width: 100%;
+  width: 96%;
   margin: 0 auto;
 }
 
@@ -866,13 +884,41 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: 1.75em;
-  line-height: 1.4em;
+  text-transform: uppercase;
   margin-bottom: 0.375em;
+  color: #d1a645;
+  font-size: 50px;
+  line-height: 40px;
+  font-family: daunpenh, "Georgia", Cambria, Times New Roman, Times, serif;
+}
+h2 span, .h2 span {
+  background: url(../images/h2-gold.gif) no-repeat;
+  height: 14px;
+  width: 96px;
+  display: block;
+  margin: 5px auto 30px;
+}
+
+.subtitle {
+  font-family: GreatVibes, cursive, "Georgia", Cambria, Times New Roman, Times, serif;
+  color: #d1a645;
+  font-size: 30px;
+  line-height: 36px;
 }
 
 h3, .h3 {
-  font-size: 1.125em;
+  font-family: daunpenh, "Georgia", Cambria, Times New Roman, Times, serif;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+h3 span, .h3 span {
+  background: url(../images/h2-white.gif) no-repeat;
+  height: 14px;
+  width: 96px;
+  display: block;
+  margin: 5px auto 30px;
 }
 
 h4, .h4 {
@@ -890,51 +936,66 @@ h5, .h5 {
 /*********************
 HEADER STYLES
 *********************/
-#preloader {
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: #632c55;
+.header {
+  border-top: 12px solid #ede2c6;
+  border-bottom: 4px solid #ede2c6;
+  padding-top: 5px;
+  -webkit-box-shadow: 0 5px 7px #999999;
+  -moz-box-shadow: 0 5px 7px #999999;
+  box-shadow: 0 5px 7px #999999;
+  position: relative;
+  z-index: 999;
 }
-#preloader #status {
-  background: url(../images/loading.gif) no-repeat center center;
-  height: 64px;
-  width: 92px;
-  margin: 45% auto;
+.header .nav ul {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  background: #ede2c6;
+  margin: 0 0 5px;
 }
-
-.header .nav li.mic-top {
+.header .nav ul li.mic-home {
   display: none;
 }
+.header .nav ul li a {
+  color: #a98945;
+  font-size: 14px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+.header .nav ul li a:hover, .header .nav ul li a:focus, .header .nav ul li a:active {
+  color: #bfa162;
+  background: #f3ecd9;
+  -webkit-transition: 0.5s;
+  -transition: 0.5s;
+  transition: 0.5s;
+}
+.header .nav ul li .animate {
+  display: none;
+}
+.header .nav ul li.current_page_item, .header .nav ul li.current-menu-item, .header .nav ul li.current_page_item {
+  color: #bfa162;
+  background: #f3ecd9;
+}
 
-#mobile-nav {
-  border-bottom: 5px solid #ede2c6;
-  -webkit-box-shadow: 0 5px 7px #cccccc;
-  -moz-box-shadow: 0 5px 7px #cccccc;
-  box-shadow: 0 5px 7px #cccccc;
-}
-#mobile-nav .logo {
-  max-width: 200px;
+#logo {
+  padding: 1%;
+  width: 78%;
   float: left;
-  margin: 2%;
-  display: block;
 }
-#mobile-nav .logo img {
+#logo img {
+  max-width: 274px;
+  max-height: 75px;
   width: 100%;
 }
-#mobile-nav .mobile-menu {
-  width: 38px;
+
+#mobile-menu {
+  padding: 1%;
+  width: 18%;
   float: right;
-  margin: 5%;
-  display: block;
-  max-width: 38px;
-  cursor: pointer;
-}
-#mobile-nav .mobile-menu img {
-  width: 100%;
+  max-height: 75px;
+  margin: 10px 0;
+  text-align: right;
 }
 
 /*********************
@@ -948,10 +1009,7 @@ the navs on the site so our css is cleaner
 and more scalable.
 */
 .nav {
-  border-bottom: 1px solid #ccc;
   border-bottom: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
   /* end .menu li */
   /* highlight current page */
   /* end current highlighters */
@@ -969,26 +1027,14 @@ and more scalable.
   display: block;
   text-decoration: none;
   padding: 10px 10px;
-  border-bottom: 1px solid #d1a745;
-  text-align: center;
-  color: #d1a745;
+  border-bottom: 1px solid #fff;
+  line-height: 16px;
   /*
   remember this is for mobile ONLY, so there's no need
   to even declare hover styles here, you can do it in
   the style.scss file where it's relevant. We want to
   keep this file as small as possible!
   */
-}
-.nav li a:hover, .nav li a:focus {
-  color: #b68d2d;
-  border-bottom: 1px solid #b68d2d;
-  -webkit-transition: all 0.2s ease-in-out;
-  -transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-.nav li a:active {
-  color: #dbba6e;
-  border-bottom: 1px solid #dbba6e;
 }
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
@@ -997,138 +1043,97 @@ and more scalable.
 
 /* end .nav */
 /*********************
-POSTS & CONTENT STYLES
+HOME PAGE STYLES
 *********************/
-#top-section-wrap {
-  background: url(../images/intro-481.jpg) no-repeat center center;
+#intro {
+  background: url(../images/intro-481.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   width: 100%;
-  height: 100%;
-  min-height: 406px;
+  height: 310px;
+  padding-top: 10px;
 }
-#top-section-wrap .inner-top-section {
+#intro .inner-intro {
   display: none;
 }
 
 .section-wrapper {
-  background: url(../images/antigua-bg-481.jpg) no-repeat center center;
+  background: url(../images/main-bg-481.jpg) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  margin: 10px 0;
-}
-
-.main-section {
-  background-color: transparent;
-  background-color: rgba(255, 255, 255, 0.85);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#D9FFFFFF,endColorstr=#D9FFFFFF);
-  zoom: 1;
   text-align: center;
-  margin: 10px 0 20px;
-  color: #d1a645;
-  padding: 10% 10% 30%;
-  border-top: 10px solid #EDE2C6;
-  border-bottom: 10px solid #EDE2C6;
+  color: #a98945;
+  padding: 10px 0;
 }
-.main-section h2 {
-  font-family: DP, "Georgia", Cambria, Times New Roman, Times, serif;
-  font-size: 50px;
-  line-height: 60px;
-  color: #d1a645;
-  font-weight: normal;
-  text-transform: uppercase;
-  background: url(../images/symbol-sprite.gif) no-repeat center bottom;
-  padding-bottom: 10px;
-  margin-bottom: 30px;
+.section-wrapper .inner-section {
+  border-top: 10px solid #ede2c6;
+  border-bottom: 10px solid #ede2c6;
+  width: 100%;
+  padding: 50px 5%;
+  min-height: 247px;
 }
-.main-section .subtitle {
-  font-family: GVreg, "Georgia", Cambria, Times New Roman, Times, serif;
-  color: #d1a745;
-  font-size: 30px;
-  line-height: 36px;
-  margin-bottom: 50px;
+.section-wrapper.last-section {
+  background: #d1a745;
+  color: white;
+}
+.section-wrapper .section-four {
+  margin-bottom: 100px;
+}
+.section-wrapper .section-four .subtitle {
+  color: white;
   font-weight: 100;
+  margin: 100px auto 30px;
+}
+.section-wrapper .section-four span {
   display: block;
 }
-.main-section p {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #a98745;
-  font-size: 16px;
-  line-height: 40px;
-  font-weight: 100;
+.section-wrapper .section-four span.pot-amount {
+  font-family: daunpenh, "Georgia", Cambria, Times New Roman, Times, serif;
+  font-size: 50px;
+  line-height: 50px;
+  padding-top: 20px;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  margin: 0 auto;
+  max-width: 100px;
+}
+
+#three-columns {
+  margin-bottom: 50px;
 }
 
 #window1 {
-  margin-top: -10px;
-  background: url(../images/window1-481.jpg) no-repeat center center;
+  background: url(../images/window1.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   background-attachment: fixed;
   height: 406px;
-  z-index: -1;
-  -webkit-box-shadow: inset 0 0 20px #333333;
-  -moz-box-shadow: inset 0 0 20px #333333;
-  box-shadow: inset 0 0 20px #333333;
 }
 
 #window2 {
-  margin-top: -10px;
-  background: url(../images/window2-481.jpg) no-repeat center center;
+  background: url(../images/window2.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   background-attachment: fixed;
-  height: 406px;
-  z-index: -1;
+  height: 367px;
 }
 
-#section-four-wrap {
-  background: #d1a745;
-  padding: 10px 0;
-}
-#section-four-wrap .section-four {
-  border-top: 10px solid #EDE2C6;
-  border-bottom: 10px solid #EDE2C6;
-  padding: 5% 0 10%;
-  text-align: center;
-  color: #fff;
-}
-#section-four-wrap .section-four h3 {
-  font-family: DP, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 30px;
-  line-height: 36px;
-  font-weight: 100;
-  text-transform: uppercase;
-}
-#section-four-wrap .section-four h3 span {
-  display: block;
-  margin-top: 10px;
-  background: url(../images/symbol.gif) no-repeat center top;
-  height: 14px;
-}
-#section-four-wrap .section-four p {
-  font-family: "Open Sans", "Georgia", Cambria, Times New Roman, Times, serif;
-  font-weight: 100;
-  font-size: 16px;
-  line-height: 40px;
-}
-#section-four-wrap .section-four #three-columns {
-  margin: 0 auto;
-  padding: 20px;
-}
-#section-four-wrap .section-four .cash-pot {
-  font-family: GVreg, "Georgia", Cambria, Times New Roman, Times, serif;
-  display: block;
-  font-size: 30px;
-  line-height: 36px;
-  font-weight: 100;
-  margin: 50px 0;
-}
-#section-four-wrap .section-four .pot-amount {
-  display: inline-block;
-  font-family: DP, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 60px;
-  line-height: 70px;
-  padding: 35px 10% 0;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+#map-section {
+  position: relative;
+  z-index: 0;
 }
 
+/*********************
+POSTS & CONTENT STYLES
+*********************/
 /* end .hentry */
 /* want to style individual post classes? Booya! */
 /* post by id (i.e. post-3) */
@@ -1437,110 +1442,84 @@ FOOTER STYLES
 *********************/
 .footer {
   clear: both;
-}
-.footer #inner-footer {
-  padding: 5%;
-}
-.footer #foot-wrapper {
   background: #632c55;
-  color: #fff;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+  font-weight: 100;
   font-size: 14px;
   line-height: 20px;
-  font-weight: 100;
-}
-.footer #foot-wrapper .nav li a {
-  border: none;
-  text-align: left;
-  padding: 0;
-  text-decoration: none;
-  text-transform: none;
-  color: #fff;
-}
-.footer #foot-wrapper .nav li a:hover, .footer #foot-wrapper .nav li a:focus, .footer #foot-wrapper .nav li a:active {
-  color: #EDE2C6;
-  -webkit-transition: all 0.2s ease-in-out;
-  -transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-.footer #foot-wrapper h3 {
-  font-size: 15px;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 17px;
+}
+.footer #inner-footer {
+  padding: 15px 0 0;
+}
+.footer h3 {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
-  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 35px 0 20px;
 }
-
-#mic-social ul.social li {
-  display: inline-block;
-  padding: 5px;
+.footer a {
+  color: white;
 }
-#mic-social ul.social li a {
-  height: 36px;
-  width: 37px;
-  display: block;
-  background: url(../images/social-sprite.png) no-repeat;
-  overflow: hidden;
+.footer a:hover, .footer a:active, .footer a:focus {
+  background: none;
+  color: #f4e6f1;
+  -webkit-transition: 0.5s;
+  -transition: 0.5s;
+  transition: 0.5s;
 }
-#mic-social ul.social li a.facebook {
-  background-position: left bottom;
+.footer .nav li {
+  float: none;
 }
-#mic-social ul.social li a.facebook:hover, #mic-social ul.social li a.facebook:focus, #mic-social ul.social li a.facebook:active {
-  background-position: left top;
+.footer .nav a {
+  color: white;
+  padding: 2px;
+  border: 0;
 }
-#mic-social ul.social li a.twitter {
-  background-position: -45px bottom;
+.footer .nav a:hover, .footer .nav a:active, .footer .nav a:focus {
+  background: none;
+  color: #f4e6f1;
+  -webkit-transition: 0.5s;
+  -transition: 0.5s;
+  transition: 0.5s;
 }
-#mic-social ul.social li a.twitter:hover, #mic-social ul.social li a.twitter:focus, #mic-social ul.social li a.twitter:active {
-  background-position: -45px top;
-}
-#mic-social ul.social li a.pinterest {
-  background-position: -90px bottom;
-}
-#mic-social ul.social li a.pinterest:hover, #mic-social ul.social li a.pinterest:focus, #mic-social ul.social li a.pinterest:active {
-  background-position: -90px top;
-}
-#mic-social ul.social li a.instagram {
-  background-position: -135px bottom;
-}
-#mic-social ul.social li a.instagram:hover, #mic-social ul.social li a.instagram:focus, #mic-social ul.social li a.instagram:active {
-  background-position: -135px top;
-}
-
-#footer-col-wrap {
-  margin-bottom: 1%;
-}
-
-#footer-form input {
-  padding: 7px 10px;
-  display: block;
+.footer #footer-form input[type="text"] {
+  border: 0;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
+  -o-border-radius: 7px;
   border-radius: 7px;
-  border: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 15px auto;
-  font-size: 14px;
-}
-#footer-form input[type=text] {
-  background: #48203e;
-  width: 75%;
+  background: #401c37;
+  color: #FFFFFF;
   font-style: italic;
-  font-weight: 100;
-  color: #fff;
-}
-#footer-form input[type=submit] {
-  color: #632c55;
-  background: #e0d5dd;
-  text-transform: uppercase;
+  margin: 10px 0 5px;
   padding: 7px 20px;
-  font-weight: 600;
+  max-width: 250px;
+  width: 100%;
+  display: block;
+  position: relative;
 }
-#footer-form input[type=submit]:hover, #footer-form input[type=submit]:focus, #footer-form input[type=submit]:active {
-  background: #fff;
-  -webkit-transition: all 0.2s ease-in-out;
-  -transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+.footer #footer-form input[type="submit"] {
+  padding: 5px 20px;
+  margin: 10px 0 5px;
+  border: 0;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  text-transform: uppercase;
+  color: #401c37;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  background: #f4e6f1;
+  position: relative;
+}
+.footer #footer-form input[type="submit"]:hover, .footer #footer-form input[type="submit"]:focus, .footer #footer-form input[type="submit"]:active {
+  background: white;
+  -webkit-transition: 0.5s;
+  -transition: 0.5s;
+  transition: 0.5s;
 }
 
 /*
@@ -1553,28 +1532,49 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
-.copyright {
-  font-size: 12px;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 16px;
-  font-style: italic;
-  font-weight: 100;
-  padding: 25px 10px;
+#mic-social {
+  margin: 20px 0;
 }
-.copyright a {
-  color: #fff;
-  text-decoration: none;
+#mic-social .social li {
+  list-style-type: none;
+  display: inline-block;
 }
-.copyright a:hover, .copyright a:focus, .copyright a:active {
-  color: #EDE2C6;
-  -webkit-transition: all 0.2s ease-in-out;
-  -transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+#mic-social .social li a {
+  background: url(../images/social-sprite.png) no-repeat;
+  display: block;
+  height: 36px;
+  width: 36px;
+  margin: 0 7px;
+}
+#mic-social .social li a:hover, #mic-social .social li a:focus #mic-social .social li a:active {
+  background-position: 0 -36px;
+}
+#mic-social .social li a.twitter {
+  background-position: -44px 0;
+}
+#mic-social .social li a.twitter:hover, #mic-social .social li a.twitter:focus #mic-social .social li a.twitter:active {
+  background-position: -44px -36px;
+}
+#mic-social .social li a.pinterest {
+  background-position: -90px 0;
+}
+#mic-social .social li a.pinterest:hover, #mic-social .social li a.pinterest:focus #mic-social .social li a.pinterest:active {
+  background-position: -90px -36px;
+}
+#mic-social .social li a.instagram {
+  background-position: -135px 0;
+}
+#mic-social .social li a.instagram:hover, #mic-social .social li a.instagram:focus #mic-social .social li a.instagram:active {
+  background-position: -135px -36px;
 }
 
-#googleMap {
-  width: 100%;
-  height: 380px;
+.copyright {
+  font-size: 12px;
+  font-style: italic;
+  margin: 50px 0 20px;
+}
+.copyright a {
+  text-decoration: none;
 }
 
 /*
@@ -1600,32 +1600,48 @@ tweeners.
   upon your base.scss styles.
   
   ******************************************************************/
-  /*********************
-  HEADER
-  *********************/
-  .header .inner-nav {
-    margin-top: 135px;
+  body {
+    line-height: 40px;
   }
 
-  #mobile-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 125px;
+  /*********************
+  HEADER STYLES
+  *********************/
+  /*********************
+  HOME PAGE STYLES
+  *********************/
+  #intro {
+    background: url(../images/intro-768.jpg) no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 5px solid #ede2c6;
-    border-top: 15px solid #ede2c6;
-    margin-top: 10px;
+    height: 496px;
   }
-  #mobile-nav .logo {
-    background: url(../images/logo.png) no-repeat;
-    width: 274px;
-    height: 75px;
-    max-width: 274px;
+
+  .section-wrapper {
+    background: url(../images/main-bg-768.jpg) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
-  #mobile-nav .logo img {
-    display: none;
+  .section-wrapper .inner-section {
+    min-height: 394px;
+  }
+  .section-wrapper .section-four span.pot-amount {
+    font-size: 100px;
+    padding: 50px 0 10px;
+    max-width: 250px;
+  }
+
+  #window1 {
+    height: 649px;
+  }
+
+  #window2 {
+    height: 586px;
   }
 
   /*********************
@@ -1656,118 +1672,6 @@ tweeners.
   /*********************
   POSTS & CONTENT STYLES
   *********************/
-  #top-section-wrap {
-    background: url(../images/intro-768.jpg) no-repeat center center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    min-height: 1024px;
-  }
-
-  #top-section {
-    z-index: 0;
-  }
-  #top-section .inner-top-section {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    display: block;
-    height: 400px;
-    margin: -800px auto 0;
-    padding: 20px;
-    width: 400px;
-  }
-  #top-section .top-section-content {
-    background: #FFFFFF;
-    border-radius: 50% 50% 50% 50%;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    text-align: center;
-    padding: 40px 20px 0 40px;
-  }
-  #top-section .image-wrap {
-    position: absolute;
-  }
-  #top-section .image-wrap img {
-    max-width: 280px;
-    max-height: 247px;
-  }
-  #top-section .title-wrap {
-    position: absolute;
-    top: 120px;
-    left: 60px;
-    display: none;
-  }
-  #top-section .title-wrap .h1 {
-    font-family: DP, "Georgia", Cambria, Times New Roman, Times, serif;
-    font-size: 50px;
-    line-height: 60px;
-    color: #d1a645;
-    font-weight: normal;
-    text-transform: uppercase;
-    background: url(../images/symbol-sprite.gif) no-repeat center bottom;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-    display: block;
-  }
-  #top-section .title-wrap .subtitle {
-    font-family: GVreg, "Georgia", Cambria, Times New Roman, Times, serif;
-    color: #d1a745;
-    font-size: 30px;
-    line-height: 36px;
-    margin-bottom: 50px;
-    font-weight: 100;
-    display: block;
-  }
-  #top-section .title-wrap .down-arrow {
-    display: block;
-    background: url(../images/arrow-dwn.png) no-repeat center center;
-    height: 24px;
-    cursor: pointer;
-  }
-
-  .section-wrapper {
-    background: url(../images/antigua-bg-768.jpg) no-repeat center center;
-    background-size: cover;
-  }
-
-  .main-section {
-    background-color: transparent;
-    background-color: rgba(255, 255, 255, 0.85);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#D9FFFFFF,endColorstr=#D9FFFFFF);
-    zoom: 1;
-    text-align: center;
-    color: #d1a645;
-  }
-
-  #section-four-wrap .section-four .pot-amount {
-    font-size: 100px;
-  }
-
-  #window1 {
-    background: url(../images/window1-768.jpg) no-repeat center center;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 406px;
-    position: relative;
-    z-index: -1;
-    margin-top: -10px;
-    height: 649px;
-  }
-
-  #window2 {
-    background: url(../images/window2-768.jpg) no-repeat center center;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 406px;
-    position: relative;
-    z-index: -1;
-    margin-top: -10px;
-    height: 649px;
-  }
-
   /* entry content */
   .entry-content {
     /* at this larger size, we can start to align images */
@@ -1793,16 +1697,12 @@ tweeners.
   /*********************
   FOOTER STYLES
   *********************/
-  #footer-form input {
-    margin: 15px 0;
+  #mic-social {
+    float: left;
   }
 
   .copyright {
     float: right;
-  }
-
-  #mic-social {
-    float: left;
   }
 
   /*
@@ -1810,52 +1710,6 @@ tweeners.
   do they need tweaking?
   */
   /* end .footer-links */
-}
-@media only screen and (min-width: 600px) {
-  .header #nav-wrapper .inner-nav {
-    position: fixed;
-    width: 100%;
-    margin-top: 100px;
-    left: 0;
-    top: 20px;
-    z-index: 999;
-  }
-  .header .nav {
-    text-align: center;
-    max-width: 1140px;
-    margin: 10px auto;
-  }
-  .header .nav li {
-    display: inline-block;
-    margin: 0 2%;
-  }
-  .header .nav li a {
-    border-bottom: 0;
-    padding: 10px 0;
-  }
-  .header .nav li a:hover, .header .nav li a:focus {
-    color: #d1a645;
-    border-bottom: 3px solid #d1a645;
-    -webkit-transition: all 0.2s ease-in-out;
-    -transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-  }
-  .header .nav li a:active {
-    color: #dbba6e;
-    border-bottom: 3px solid #dbba6e;
-  }
-
-  #mobile-nav {
-    height: 180px;
-    z-index: 999;
-  }
-  #mobile-nav .logo {
-    margin: 10px auto;
-    float: none;
-  }
-  #mobile-nav .mobile-menu {
-    display: none;
-  }
 }
 /*
 TABLET & SMALLER LAPTOPS
@@ -1986,29 +1840,111 @@ you can add resource intensive styles.
   /*********************
   HEADER STYLES
   *********************/
-  .header #nav-wrapper .inner-nav {
+  .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
     z-index: 999;
+  }
+  .header .inner-top {
+    display: none;
+  }
+  .header .nav {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .header .nav ul {
+    text-align: center;
+    margin: 0 auto 10%;
+    background: none;
+    height: 20px;
+    display: block;
+  }
+  .header .nav ul li {
+    display: block;
+    width: 12%;
+    padding: 0;
+    margin: 0;
+  }
+  .header .nav ul li a {
+    padding: 37% 0 20px;
+    margin: 0;
+    display: block;
+  }
+  .header .nav ul li a:hover, .header .nav ul li a:focus, .header .nav ul li a:active {
+    background: none;
+  }
+  .header .nav ul li .animate {
+    display: block;
+    height: 2px;
+    margin: 0 auto;
+    width: 45%;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+  }
+  .header .nav ul li .animate span {
+    height: 100%;
+    width: 0;
+    background: #a98945;
+    display: block;
+    margin: 0 auto;
+  }
+  .header .nav ul li:hover .animate span, .header .nav ul li:focus .animate span, .header .nav ul li:active .animate span {
+    width: 100%;
+  }
+  .header .nav ul li.mic-home {
+    display: block;
+    min-width: 150px;
+    max-width: 274px;
+    width: 25%;
+    height: 100%;
+  }
+  .header .nav ul li.mic-home a {
+    padding: 0;
+    background: none;
+  }
+  .header .nav ul li.mic-home a img {
+    width: 100%;
+    position: relative;
+    vertical-align: text-bottom;
+  }
+  .header .nav ul li.mic-home .animate {
+    display: none;
+  }
+  .header .nav ul li.current_page_item.mic-home, .header .nav ul li.current-menu-item.mic-home {
+    background: none;
   }
 
   /*********************
   NAVIGATION STYLES
   *********************/
   .nav {
+    border: 0;
     /* end .menu ul li */
     /* highlight current page */
     /* end current highlighters */
   }
   .nav li {
+    float: left;
+    position: relative;
     /*
     plan your menus and drop-downs wisely.
     */
     /* showing sub-menus */
   }
   .nav li a {
+    border-bottom: 0;
     /*
     you can use hover styles here even though this size
     has the possibility of being a mobile device.
     */
+  }
+  .nav li a:hover, .nav li a:focus {
+    background-color: #dedede;
   }
   .nav li ul.sub-menu,
   .nav li ul.children {
@@ -2047,49 +1983,83 @@ you can add resource intensive styles.
 
   /* end .nav */
   /*********************
-  SIDEBARS & ASIDES
+  HOME PAGE STYLES
   *********************/
-  #top-section-wrap {
+  #intro {
     background: url(../images/intro.jpg) no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     width: 100%;
-    height: 100%;
-    min-height: 1084px;
+    height: 1084px;
+  }
+  #intro .inner-intro {
+    display: block;
+    background: url(../images/intro-bg.png) no-repeat;
+    height: 403px;
+    width: 403px;
+    text-align: center;
+    margin: 200px auto 0;
+    position: relative;
+  }
+  #intro .inner-intro .image-wrap {
+    display: none;
+    position: absolute;
+    left: 63px;
+  }
+  #intro .inner-intro .image-wrap img {
+    margin-top: 60px;
+  }
+  #intro .inner-intro .title-wrap {
+    top: 120px;
+    left: 56px;
+    position: absolute;
+  }
+  #intro .inner-intro .title-wrap span {
+    display: block;
+  }
+  #intro .inner-intro .title-wrap span.h2 {
+    background: url(../images/h2-gold.gif) no-repeat center bottom;
+    height: 75px;
+  }
+  #intro .inner-intro .title-wrap span.subtitle {
+    font-family: GreatVibes, cursive, "Georgia", Cambria, Times New Roman, Times, serif;
+    font-size: 30px;
+    line-height: 36px;
+    color: #d1a645;
+    margin-top: 30px;
+  }
+  #intro .inner-intro .title-wrap span.down-arrow {
+    background: url(../images/arrow-dwn.png) no-repeat center;
+    width: 100%;
+    height: 120px;
+    margin: 0 auto;
+    cursor: pointer;
   }
 
   .section-wrapper {
-    background: url(../images/antigua-bg.jpg) no-repeat center;
+    background: url(../images/main-bg.jpg) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
+  }
+  .section-wrapper .inner-section {
+    min-height: 862px;
   }
 
   #window1 {
-    background: url(../images/window1.jpg) no-repeat center center;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 768px;
-    position: relative;
-    z-index: -1;
-    margin-top: -10px;
+    height: 1376px;
   }
 
   #window2 {
-    background: url(../images/window2.jpg) no-repeat center center;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 768px;
-    position: relative;
-    z-index: -1;
-    margin-top: -10px;
+    height: 1258px;
   }
 
-  #three-columns {
-    margin: 0 auto;
-    padding: 20px;
-  }
-  #three-columns .threecol {
-    width: 30%;
-  }
-
+  /*********************
+  SIDEBARS & ASIDES
+  *********************/
   .sidebar {
     margin-top: 2.2em;
   }
@@ -2142,60 +2112,110 @@ you can add resource intensive styles.
   /* end .footer-links */
 }
 @media only screen and (min-width: 840px) {
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 140px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 3px solid #ede2c6;
-    border-top: 15px solid #ede2c6;
-    margin-top: 10px;
-    z-index: 999;
-    -webkit-box-shadow: 0 5px 7px #999999;
-    -moz-box-shadow: 0 5px 7px #999999;
-    box-shadow: 0 5px 7px #999999;
-  }
-  .header #nav-wrapper .inner-nav {
-    margin: 0;
-  }
-  .header .nav {
-    height: 75px;
-  }
-  .header .nav li {
-    vertical-align: bottom;
-  }
-  .header .nav li a {
-    height: 75px;
-    padding-top: 45px;
-  }
-  .header .nav li.mic-top {
-    display: inline-block;
-  }
-  .header .nav li.mic-top a {
-    background: url(../images/logo_med.png) no-repeat center 10px;
-    width: 200px;
-    height: 75px;
-    text-indent: -9000px;
-    overflow: visible;
-  }
-  .header .nav li.mic-top a:hover, .header .nav li.mic-top a:focus, .header .nav li.mic-top a:active {
-    border-bottom: 0;
+  /******************************************************************
+  Site Name:
+  Author:
+  
+  Stylesheet: Grid Stylesheet
+  
+  I've seperated the grid so you can swap it out easily. It's
+  called at the top the style.scss stylesheet.
+  
+  There are a ton of grid solutions out there. You should definitely
+  experiment with your own. Here are some recommendations:
+  
+  http://gridsetapp.com - Love this site. Responsive Grids made easy.
+  http://susy.oddbird.net/ - Grids using Compass. Very elegant.
+  http://gridpak.com/ - Create your own responsive grid.
+  
+  The grid below is a combination of the 1140 grid and Twitter Boostrap. 
+  I liked 1140 but Boostrap's grid was way more detailed so I merged them 
+  together, let's see how this works out. If you want to use 1140, the original 
+  values are commented out on each line.
+  
+  ******************************************************************/
+  .onecol {
+    width: 5.801104972%;
   }
 
-  #mobile-nav {
-    display: none;
+  /* 4.85%;  } /* grid_1  */
+  .twocol {
+    width: 14.364640883%;
   }
-}
-@media only screen and (min-width: 940px) {
-  .header .nav {
-    height: 100px;
+
+  /* 13.45%; } /* grid_2  */
+  .threecol {
+    width: 22.928176794%;
   }
-  .header .nav li.mic-top a {
-    background: url(../images/logo.png) no-repeat;
-    width: 274px;
-    height: 82px;
+
+  /* 22.05%; } /* grid_3  */
+  .fourcol {
+    width: 31.491712705%;
+  }
+
+  /* 30.75%; } /* grid_4  */
+  .fivecol {
+    width: 40.055248616%;
+  }
+
+  /* 39.45%; } /* grid_5  */
+  .sixcol {
+    width: 48.618784527%;
+  }
+
+  /* 48%;    } /* grid_6  */
+  .sevencol {
+    width: 57.182320438000005%;
+  }
+
+  /* 56.75%; } /* grid_7  */
+  .eightcol {
+    width: 65.74585634900001%;
+  }
+
+  /* 65.4%;  } /* grid_8  */
+  .ninecol {
+    width: 74.30939226%;
+  }
+
+  /* 74.05%; } /* grid_9  */
+  .tencol {
+    width: 82.87292817100001%;
+  }
+
+  /* 82.7%;  } /* grid_10 */
+  .elevencol {
+    width: 91.436464082%;
+  }
+
+  /* 91.35%; } /* grid_11 */
+  .twelvecol {
+    width: 99.999999993%;
+  }
+
+  /* 100%;   } /* grid_12 */
+  .onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol, .twelvecol {
+    position: relative;
+    float: left;
+    margin-left: 2.762430939%;
+  }
+
+  .first {
+    margin-left: 0;
+  }
+
+  .last {
+    float: right;
+  }
+
+  .header .nav ul li a {
+    padding: 44% 0 20px;
+  }
+  .header .nav ul li.mic-home {
+    max-width: 274px;
+  }
+  .header .nav ul li.mic-home a img {
+    top: 6px;
   }
 }
 /*

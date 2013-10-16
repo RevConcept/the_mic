@@ -6,12 +6,6 @@
 
 						<div id="main" class=" clearfix" role="main">
 
-								<?php if ( is_front_page() || is_home() ) : ?>
-
-									<?php get_template_part('mic-home'); ?>
-									
-								<?php else: ?>
-
 								<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 									<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
@@ -58,7 +52,7 @@
 						</div> <!-- end #main -->
 
 						<?php get_sidebar(); ?>
-					<?php endif; //end else ?>
+					
 
 				</div> <!-- end #inner-content -->
 

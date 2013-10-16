@@ -83,15 +83,19 @@ TYPOGRAPHY
 	Be sure to remove the comment brackets.
 */
 @font-face {
-  font-family: 'DP';
-  src: url("../font/daunpenh.eot");
-  src: url("../font/daunpenh.eot?#iefix") format("embedded-opentype"), url("../font/daunpenh.woff") format("woff"), url("../font/daunpenh.ttf") format("truetype"), url("../font/daunpenh.svg#daunpenh") format("svg");
+  font-family: 'daunpenh';
+  src: url("../fonts/daunpenh.eot");
+  src: url("../fonts/daunpenh.eot?#iefix") format("embedded-opentype"), url("../fonts/daunpenh.woff") format("woff"), url("../fonts/daunpenh.ttf") format("truetype"), url("../fonts/daunpenh.svg#daunpenh") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'GVreg';
-  src: url("../font/GreatVibes-Regular.eot");
-  src: url("../font/GreatVibes-Regular.eot?#iefix") format("embedded-opentype"), url("../font/GreatVibes-Regular.woff") format("woff"), url("../font/GreatVibes-Regular.ttf") format("truetype"), url("../font/GreatVibes-Regular.svg#GreatVibes-Regular") format("svg");
+  font-family: 'GreatVibes';
+  src: url("../fonts/GreatVibes-Regular.eot");
+  src: url("../fonts/GreatVibes-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/GreatVibes-Regular.woff") format("woff"), url("../fonts/GreatVibes-Regular.ttf") format("truetype"), url("../fonts/GreatVibes-Regular.svg#GreatVibes-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /*
@@ -156,8 +160,6 @@ Be careful with these since they can
 really slow down your CSS. Don't overdo it.
 *********************/
 /* @include css-gradient(#dfdfdf,#f8f8f8); */
-/* .boxShadow(0,0,4px,0,#444); */
-/* .boxShadow(none); */
 /*********************
 BOX SIZING
 *********************/
@@ -352,32 +354,48 @@ so you still want to keep it pretty light and simply expand
 upon your base.scss styles.
 
 ******************************************************************/
-/*********************
-HEADER
-*********************/
-.header .inner-nav {
-  margin-top: 135px;
+body {
+  line-height: 40px;
 }
 
-#mobile-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 125px;
+/*********************
+HEADER STYLES
+*********************/
+/*********************
+HOME PAGE STYLES
+*********************/
+#intro {
+  background: url(../images/intro-768.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 5px solid #ede2c6;
-  border-top: 15px solid #ede2c6;
-  margin-top: 10px;
+  height: 496px;
 }
-#mobile-nav .logo {
-  background: url(../images/logo.png) no-repeat;
-  width: 274px;
-  height: 75px;
-  max-width: 274px;
+
+.section-wrapper {
+  background: url(../images/main-bg-768.jpg) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-#mobile-nav .logo img {
-  display: none;
+.section-wrapper .inner-section {
+  min-height: 394px;
+}
+.section-wrapper .section-four span.pot-amount {
+  font-size: 100px;
+  padding: 50px 0 10px;
+  max-width: 250px;
+}
+
+#window1 {
+  height: 649px;
+}
+
+#window2 {
+  height: 586px;
 }
 
 /*********************
@@ -408,118 +426,6 @@ NAVIGATION STYLES
 /*********************
 POSTS & CONTENT STYLES
 *********************/
-#top-section-wrap {
-  background: url(../images/intro-768.jpg) no-repeat center center;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  min-height: 1024px;
-}
-
-#top-section {
-  z-index: 0;
-}
-#top-section .inner-top-section {
-  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  display: block;
-  height: 400px;
-  margin: -800px auto 0;
-  padding: 20px;
-  width: 400px;
-}
-#top-section .top-section-content {
-  background: #FFFFFF;
-  border-radius: 50% 50% 50% 50%;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  text-align: center;
-  padding: 40px 20px 0 40px;
-}
-#top-section .image-wrap {
-  position: absolute;
-}
-#top-section .image-wrap img {
-  max-width: 280px;
-  max-height: 247px;
-}
-#top-section .title-wrap {
-  position: absolute;
-  top: 120px;
-  left: 60px;
-  display: none;
-}
-#top-section .title-wrap .h1 {
-  font-family: DP, "Georgia", Cambria, Times New Roman, Times, serif;
-  font-size: 50px;
-  line-height: 60px;
-  color: #d1a645;
-  font-weight: normal;
-  text-transform: uppercase;
-  background: url(../images/symbol-sprite.gif) no-repeat center bottom;
-  padding-bottom: 10px;
-  margin-bottom: 30px;
-  display: block;
-}
-#top-section .title-wrap .subtitle {
-  font-family: GVreg, "Georgia", Cambria, Times New Roman, Times, serif;
-  color: #d1a745;
-  font-size: 30px;
-  line-height: 36px;
-  margin-bottom: 50px;
-  font-weight: 100;
-  display: block;
-}
-#top-section .title-wrap .down-arrow {
-  display: block;
-  background: url(../images/arrow-dwn.png) no-repeat center center;
-  height: 24px;
-  cursor: pointer;
-}
-
-.section-wrapper {
-  background: url(../images/antigua-bg-768.jpg) no-repeat center center;
-  background-size: cover;
-}
-
-.main-section {
-  background-color: transparent;
-  background-color: rgba(255, 255, 255, 0.85);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#D9FFFFFF,endColorstr=#D9FFFFFF);
-  zoom: 1;
-  text-align: center;
-  color: #d1a645;
-}
-
-#section-four-wrap .section-four .pot-amount {
-  font-size: 100px;
-}
-
-#window1 {
-  background: url(../images/window1-768.jpg) no-repeat center center;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 406px;
-  position: relative;
-  z-index: -1;
-  margin-top: -10px;
-  height: 649px;
-}
-
-#window2 {
-  background: url(../images/window2-768.jpg) no-repeat center center;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 406px;
-  position: relative;
-  z-index: -1;
-  margin-top: -10px;
-  height: 649px;
-}
-
 /* entry content */
 .entry-content {
   /* at this larger size, we can start to align images */
@@ -545,16 +451,12 @@ POSTS & CONTENT STYLES
 /*********************
 FOOTER STYLES
 *********************/
-#footer-form input {
-  margin: 15px 0;
+#mic-social {
+  float: left;
 }
 
 .copyright {
   float: right;
-}
-
-#mic-social {
-  float: left;
 }
 
 /*
@@ -588,29 +490,111 @@ LAYOUT & GRID STYLES
 /*********************
 HEADER STYLES
 *********************/
-.header #nav-wrapper .inner-nav {
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
   z-index: 999;
+}
+.header .inner-top {
+  display: none;
+}
+.header .nav {
+  text-align: center;
+  margin: 0 auto;
+}
+.header .nav ul {
+  text-align: center;
+  margin: 0 auto 10%;
+  background: none;
+  height: 20px;
+  display: block;
+}
+.header .nav ul li {
+  display: block;
+  width: 12%;
+  padding: 0;
+  margin: 0;
+}
+.header .nav ul li a {
+  padding: 37% 0 20px;
+  margin: 0;
+  display: block;
+}
+.header .nav ul li a:hover, .header .nav ul li a:focus, .header .nav ul li a:active {
+  background: none;
+}
+.header .nav ul li .animate {
+  display: block;
+  height: 2px;
+  margin: 0 auto;
+  width: 45%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+.header .nav ul li .animate span {
+  height: 100%;
+  width: 0;
+  background: #a98945;
+  display: block;
+  margin: 0 auto;
+}
+.header .nav ul li:hover .animate span, .header .nav ul li:focus .animate span, .header .nav ul li:active .animate span {
+  width: 100%;
+}
+.header .nav ul li.mic-home {
+  display: block;
+  min-width: 150px;
+  max-width: 274px;
+  width: 25%;
+  height: 100%;
+}
+.header .nav ul li.mic-home a {
+  padding: 0;
+  background: none;
+}
+.header .nav ul li.mic-home a img {
+  width: 100%;
+  position: relative;
+  vertical-align: text-bottom;
+}
+.header .nav ul li.mic-home .animate {
+  display: none;
+}
+.header .nav ul li.current_page_item.mic-home, .header .nav ul li.current-menu-item.mic-home {
+  background: none;
 }
 
 /*********************
 NAVIGATION STYLES
 *********************/
 .nav {
+  border: 0;
   /* end .menu ul li */
   /* highlight current page */
   /* end current highlighters */
 }
 .nav li {
+  float: left;
+  position: relative;
   /*
   plan your menus and drop-downs wisely.
   */
   /* showing sub-menus */
 }
 .nav li a {
+  border-bottom: 0;
   /*
   you can use hover styles here even though this size
   has the possibility of being a mobile device.
   */
+}
+.nav li a:hover, .nav li a:focus {
+  background-color: #dedede;
 }
 .nav li ul.sub-menu,
 .nav li ul.children {
@@ -649,49 +633,83 @@ NAVIGATION STYLES
 
 /* end .nav */
 /*********************
-SIDEBARS & ASIDES
+HOME PAGE STYLES
 *********************/
-#top-section-wrap {
+#intro {
   background: url(../images/intro.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   width: 100%;
-  height: 100%;
-  min-height: 1084px;
+  height: 1084px;
+}
+#intro .inner-intro {
+  display: block;
+  background: url(../images/intro-bg.png) no-repeat;
+  height: 403px;
+  width: 403px;
+  text-align: center;
+  margin: 200px auto 0;
+  position: relative;
+}
+#intro .inner-intro .image-wrap {
+  display: none;
+  position: absolute;
+  left: 63px;
+}
+#intro .inner-intro .image-wrap img {
+  margin-top: 60px;
+}
+#intro .inner-intro .title-wrap {
+  top: 120px;
+  left: 56px;
+  position: absolute;
+}
+#intro .inner-intro .title-wrap span {
+  display: block;
+}
+#intro .inner-intro .title-wrap span.h2 {
+  background: url(../images/h2-gold.gif) no-repeat center bottom;
+  height: 75px;
+}
+#intro .inner-intro .title-wrap span.subtitle {
+  font-family: GreatVibes, cursive, "Georgia", Cambria, Times New Roman, Times, serif;
+  font-size: 30px;
+  line-height: 36px;
+  color: #d1a645;
+  margin-top: 30px;
+}
+#intro .inner-intro .title-wrap span.down-arrow {
+  background: url(../images/arrow-dwn.png) no-repeat center;
+  width: 100%;
+  height: 120px;
+  margin: 0 auto;
+  cursor: pointer;
 }
 
 .section-wrapper {
-  background: url(../images/antigua-bg.jpg) no-repeat center;
+  background: url(../images/main-bg.jpg) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
+}
+.section-wrapper .inner-section {
+  min-height: 862px;
 }
 
 #window1 {
-  background: url(../images/window1.jpg) no-repeat center center;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 768px;
-  position: relative;
-  z-index: -1;
-  margin-top: -10px;
+  height: 1376px;
 }
 
 #window2 {
-  background: url(../images/window2.jpg) no-repeat center center;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 768px;
-  position: relative;
-  z-index: -1;
-  margin-top: -10px;
+  height: 1258px;
 }
 
-#three-columns {
-  margin: 0 auto;
-  padding: 20px;
-}
-#three-columns .threecol {
-  width: 30%;
-}
-
+/*********************
+SIDEBARS & ASIDES
+*********************/
 .sidebar {
   margin-top: 2.2em;
 }
@@ -771,7 +789,7 @@ You can also target specific versions by using the classes applied to
 the html element. These can sometimes change, so take a look inside the
 header.php file to see what they are:
 
-
-.lt-ie8 .class { ... }
-
 */
+.lt-ie9 .header {
+  background: url(../images/transparent-bg.png) repeat;
+}

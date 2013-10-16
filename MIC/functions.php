@@ -161,10 +161,14 @@ function bones_wpsearch($form) {
 	return $form;
 } // don't remove this bracket!
 
-function mic_print_top_section() {
+
+
+/************* MIC HOME PAGE LAYOUT *****************/
+
+function mic_print_intro() {
 
 	//image	
-    $mic_top_str .= '<div class="top-section-content">';
+    $mic_top_str = '<div class="inner-intro clearfix wrap">';
 	if ( get_field('top_section_image', 'options') ) :		
 		$mic_top_str .= '<div class="image-wrap"><img src="' . get_field('top_section_image', 'options') . '" /></div>';
 	endif;
@@ -176,7 +180,7 @@ function mic_print_top_section() {
 		
 	$mic_top_str .= '<div class="title-wrap">';
 		if ( get_field('top_section_title', 'options') ) :
-			$mic_top_str .= '<span class="h1">' . get_field('top_section_title', 'options') . '</span>';
+			$mic_top_str .= '<span class="h2">' . get_field('top_section_title', 'options') . '</span>';
 		endif;
 		//subtitle
 		if ( get_field('top_section_subtitle', 'options') ) :
@@ -197,7 +201,7 @@ function mic_print_section_two() {
 	endif;
 	//title	
 	if ( get_field('section_two_title', 'options') ) :
-		echo '<h2 id="antigua">' . get_field('section_two_title', 'options') . '</h2>';
+		echo '<h2 id="antigua">' . get_field('section_two_title', 'options') . '<span></span></h2>';
 	endif;
 	//subtitle	
 	if ( get_field('section_two_subtitle', 'options') ) :
@@ -217,7 +221,7 @@ function mic_print_section_three() {
 	endif;
 	//title	
 	if ( get_field('section_three_title', 'options') ) :
-		echo '<h2 id="casino">' . get_field('section_three_title', 'options') . '</h2>';
+		echo '<h2 id="casino">' . get_field('section_three_title', 'options') . '<span></span></h2>';
 	endif;
 	//subtitle	
 	if ( get_field('section_three_subtitle', 'options') ) :
@@ -233,21 +237,71 @@ function mic_print_section_four() {
 
 	//three columns
 	if ( get_field('three_columns', 'options') ) :
-		echo '<div id="three-columns" class="clearfix">';
-		while ( has_sub_field('three_columns', 'options') ) :
-			$mic_title = get_sub_field('title');
-			echo '<div class="threecol">';
-			echo '<img src="' . get_sub_field('icon') . '" alt="' . get_sub_field('title') . '" />';
-			echo '<h3 id="' . strtolower(str_replace(' ', '', $mic_title)) . '">' . $mic_title . '<span></span></h3>';
-			echo get_sub_field('description');
-			echo '</div>';
-		endwhile;
-		echo '</div>';
+		$col_options = get_field('three_columns', 'options');
+
+		//break up into groups of three to display in blocks of three columns
+		$block_sets = array_chunk($col_options, 3);
+		if ( !empty($block_sets) ) :
+			foreach($block_sets as $blocks) :
+
+				//wrap each block of 3
+				echo '<div id="three-columns" class="clearfix">';
+
+				foreach($blocks as $key=>$value) :
+					switch ($key) {
+						case 0:
+							$block_str = '<div class="fourcol first">';
+							break;
+						case 1:
+							$block_str = '<div class="fourcol ">';
+							break;
+						case 2:
+							$block_str = '<div class="fourcol last">';
+							break;
+						
+						default:
+							$block_str = '<div class="fourcol ">';
+							break;
+					}
+
+				
+					if ( !empty($value[icon]) ) {
+						$block_str .= '<div class="img-wrap"><img src="'. $value[icon] .'" /></div>';
+					}
+					
+					if ( !empty($value[title]) ) {
+						
+						if (strstr($value[title], ' ', true)) {
+							$smtitle = strstr($value[title], ' ', true);
+						} else {
+							$smtitle = $value[title];
+						}
+						$block_str .= '<h3 id="'.strtolower($smtitle).'">' . $value[title] .'<span></span></h3>';
+					}
+
+					if ( !empty($value[description]) ) {
+						$block_str .= '<p>'. $value[description] .'</p>';
+					}
+				
+					$block_str .= '</div>';
+					echo $block_str;
+					
+				endforeach;
+
+				
+				echo '</div>';
+			endforeach;
+		endif;
 	endif;
 
 	//title	
 	if ( get_field('last_section_title', 'options') ) :
-		echo '<h3 id="nightlife">' . get_field('last_section_title', 'options') . '<span></span></h3>';
+		if (strstr(get_field('last_section_title', 'options'), ' ', true)) {
+			$lttitle = strstr(get_field('last_section_title', 'options'), ' ', true);
+		} else {
+			$lttitle = get_field('last_section_title', 'options');
+		}
+		echo '<h3 id="'.strtolower($lttitle).'">' . get_field('last_section_title', 'options') . '<span></span></h3>';
 	endif;
 	//content
 	if ( get_field('last_section_content', 'options') ) :
@@ -255,7 +309,7 @@ function mic_print_section_four() {
 	endif;
 	//cash pot title	
 	if ( get_field('cash_pot_title', 'options') ) :
-		echo '<span class="cash-pot">' . get_field('cash_pot_title', 'options') . '</span>';
+		echo '<span class="cash-pot subtitle">' . get_field('cash_pot_title', 'options') . '</span>';
 	endif;
 	//cash pot amount	
 	if ( get_field('cash_pot_amount', 'options') ) :
@@ -273,11 +327,15 @@ function mic_print_sitemap() {
 			if( get_sub_field('menu_label', 'options') ) :
 				$mic_menu_label = get_sub_field('menu_label', 'options');
 				if(strtolower($mic_menu_label) == 'home') :
-					$mic_menu_class = 'mic-top';
+					$mic_menu_class = 'mic-home';
 				else :
-					$mic_menu_class = $mic_menu_label;
+					if (strstr(get_sub_field('menu_label', 'options'), ' ', true)) {
+						$mic_menu_class = strstr(get_sub_field('menu_label', 'options'), ' ', true);
+					} else {
+						$mic_menu_class = get_sub_field('menu_label', 'options');
+					}
 				endif;
-				$sitemap_str .= '<li class="' . strtolower(str_replace(' ', '', $mic_menu_class)) . '"><a href="' . get_sub_field('page_link', 'options') . '" title="' . $mic_menu_label . '">' . $mic_menu_label . '</a></li>';
+				$sitemap_str .= '<li class="' . strtolower($mic_menu_class) . '"><a href="' . get_sub_field('page_link', 'options') . '" title="' . $mic_menu_label . '">' . $mic_menu_label . '</a></li>';
 			endif;
 		endwhile;
 		$sitemap_str .= '</ul>';
