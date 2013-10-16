@@ -219,14 +219,16 @@ jQuery(document).ready(function($) {
     if (responsive_viewport > 1030) {
         
     }
+
+
+    //Animated icons
+    $('img.icon').addClass('animated pulse');
     
 	
 	// add all your scripts here
 	
  
 }); /* end of as page load scripts */
-
-
 
 
 

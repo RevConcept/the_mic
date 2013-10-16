@@ -266,7 +266,8 @@ function mic_print_section_four() {
 
 				
 					if ( !empty($value[icon]) ) {
-						$block_str .= '<div class="img-wrap"><img src="'. $value[icon] .'" /></div>';
+						$smtitle = $value[title];
+						$block_str .= '<div class="img-wrap icon '.strtolower($smtitle).'"><img src="'. $value[icon] .'" /></div>';
 					}
 					
 					if ( !empty($value[title]) ) {
