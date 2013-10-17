@@ -673,41 +673,96 @@ BOX SIZING
 /* @include box-sizing(border-box); */
 /* NOTE: value of "padding-box" is only supported in Gecko. So
 probably best not to use it. I mean, were you going to anyway? */
-
 /* ===========================================
-    Animations
-   =============================================*/
+Animations
+=============================================*/
+.animated {
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+}
 
-  .animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}@-webkit-keyframes pulse {
-    0% { -webkit-transform: scale(1); } 50% { -webkit-transform: scale(1.1); }
-    100% { -webkit-transform: scale(1); }
-  }
-  @-moz-keyframes pulse {
-      0% { -moz-transform: scale(1); }  
-    50% { -moz-transform: scale(1.1); }
-      100% { -moz-transform: scale(1); }
-  }
-  @-o-keyframes pulse {
-      0% { -o-transform: scale(1); }  
-    50% { -o-transform: scale(1.1); }
-      100% { -o-transform: scale(1); }
-  }
-  @keyframes pulse {
-      0% { transform: scale(1); } 
-    50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-  }
-  .pulse {
-    -webkit-animation-name: pulse;
-    -moz-animation-name: pulse;
-    -o-animation-name: pulse;
-    animation-name: pulse;
-    -webkit-animation-delay: .5s;
-    -moz-animation-delay: .5s;
-    -o-animation-delay: .5s;
-    animation-delay: .5s;
+.animated.hinge {
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
   }
 
+  50% {
+    -webkit-transform: scale(1.1);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+  }
+
+  50% {
+    -moz-transform: scale(1.1);
+  }
+
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+
+@-o-keyframes pulse {
+  0% {
+    -o-transform: scale(1);
+  }
+
+  50% {
+    -o-transform: scale(1.1);
+  }
+
+  100% {
+    -o-transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  -webkit-animation-name: pulse;
+  -moz-animation-name: pulse;
+  -o-animation-name: pulse;
+  animation-name: pulse;
+  -webkit-animation-delay: .5s;
+  -moz-animation-delay: .5s;
+  -o-animation-delay: .5s;
+  animation-delay: .5s;
+}
 
 /*********************
 BUTTONS
@@ -970,26 +1025,21 @@ h5, .h5 {
 }
 
 /*********************
-PARAGRAPH STYLES
-*********************/
-
-p {
-  max-width: 825px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/*********************
 HEADER STYLES
 *********************/
 .header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 999;
   border-top: 12px solid #ede2c6;
   border-bottom: 4px solid #ede2c6;
   padding-top: 5px;
   -webkit-box-shadow: 0 5px 7px #999999;
   -moz-box-shadow: 0 5px 7px #999999;
   box-shadow: 0 5px 7px #999999;
-  position: relative;
   z-index: 999;
 }
 .header .nav ul {
@@ -999,6 +1049,7 @@ HEADER STYLES
   border-radius: 4px;
   background: #ede2c6;
   margin: 0 0 5px;
+  overflow: hidden;
 }
 .header .nav ul li.mic-home {
   display: none;
@@ -1036,12 +1087,17 @@ HEADER STYLES
 }
 
 #mobile-menu {
-  padding: 1%;
-  width: 18%;
-  float: right;
-  max-height: 75px;
-  margin: 10px 0;
-  text-align: right;
+  display: block;
+  margin: 15px 0 0 0;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  -transition: 0.5s;
+  transition: 0.5s;
+}
+#mobile-menu:hover, #mobile-menu:focus, #mobile-menu:active {
+  color: #dbba6e;
 }
 
 /*********************
@@ -1102,6 +1158,26 @@ HOME PAGE STYLES
   padding-top: 10px;
 }
 #intro .inner-intro {
+  display: block;
+  background: url(../images/intro-bg.png) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  margin: 60px auto 0;
+  position: relative;
+}
+#intro .inner-intro .image-wrap {
+  position: absolute;
+  top: 28px;
+}
+#intro .inner-intro .image-wrap img {
+  width: 73%;
+}
+#intro .inner-intro .title-wrap {
   display: none;
 }
 
@@ -1665,6 +1741,17 @@ tweeners.
     width: 100%;
     height: 496px;
   }
+  #intro .inner-intro {
+    width: 400px;
+    height: 400px;
+  }
+  #intro .inner-intro .image-wrap {
+    top: 60px;
+    left: 60px;
+  }
+  #intro .inner-intro .image-wrap img {
+    width: 100%;
+  }
 
   .section-wrapper {
     background: url(../images/main-bg-768.jpg) no-repeat;
@@ -1886,14 +1973,6 @@ you can add resource intensive styles.
   /*********************
   HEADER STYLES
   *********************/
-  .header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.9);
-    z-index: 999;
-  }
   .header .inner-top {
     display: none;
   }
@@ -1903,9 +1982,8 @@ you can add resource intensive styles.
   }
   .header .nav ul {
     text-align: center;
-    margin: 0 auto 10%;
+    margin: 0 auto 20px;
     background: none;
-    height: 20px;
     display: block;
   }
   .header .nav ul li {
@@ -2053,6 +2131,7 @@ you can add resource intensive styles.
     display: none;
     position: absolute;
     left: 63px;
+    top: 0;
   }
   #intro .inner-intro .image-wrap img {
     margin-top: 60px;

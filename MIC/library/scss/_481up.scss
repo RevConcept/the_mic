@@ -33,6 +33,19 @@ HOME PAGE STYLES
 	@include bg-size( cover );
 	width: 100%;
 	height: 496px;
+
+	.inner-intro {
+		width: 400px;
+		height:400px;
+		.image-wrap {
+			top: 60px;
+			left: 60px;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
 }
 .section-wrapper {
 	background: url(../images/main-bg-768.jpg) no-repeat;
