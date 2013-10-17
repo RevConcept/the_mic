@@ -969,15 +969,6 @@ h5, .h5 {
   letter-spacing: 2px;
 }
 
-/*********************
-PARAGRAPH STYLES
-*********************/
-
-p {
-  max-width: 825px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 /*********************
 HEADER STYLES
@@ -1945,7 +1936,7 @@ you can add resource intensive styles.
   .header .nav ul li.mic-home {
     display: block;
     min-width: 150px;
-    max-width: 274px;
+    max-width: 278px;
     width: 25%;
     height: 100%;
   }
