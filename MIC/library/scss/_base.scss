@@ -205,11 +205,16 @@ HEADER STYLES
 *********************/
 
 .header {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	background: rgba( 255,255,255, 0.90 );
+	z-index: 999;
 	border-top: 12px solid $border-color;
 	border-bottom: 4px solid $border-color;
 	padding-top: 5px;
 	@include box-shadow( 0, 5px, 7px, #999 );
-	position: relative;
 	z-index: 999;
 
 	.nav {
@@ -218,6 +223,7 @@ HEADER STYLES
 			@include border-radius();
 			background: $border-color;
 			margin: 0 0 5px;
+			overflow: hidden;
 
 			li.mic-home {
 				display: none;
@@ -261,12 +267,15 @@ HEADER STYLES
 		}
 	}
 	#mobile-menu {
-		padding: 1%;
-		width: 18%;
-		float: right;
-		max-height: 75px;
-		margin:10px 0;
-		text-align: right;
+		display: block;
+    	margin: 15px 0 0 0;
+    	display: block;
+    	text-align: center;
+    	cursor: pointer;
+    	@include transition(0.5s);
+    	&:hover, &:focus, &:active {
+    		color: lighten($title-color, 10%);
+    	}
 	}
 	
 
@@ -364,7 +373,27 @@ HOME PAGE STYLES
 	padding-top: 10px;
 
 	.inner-intro {
-		display: none;
+		display: block;
+		background: url(../images/intro-bg.png) no-repeat;
+		@include bg-size(cover);
+		width: 200px;
+		height: 200px;
+		text-align: center;
+		margin: 60px auto 0;
+		position: relative;
+		    
+		.image-wrap {				
+			position: absolute;
+			top: 28px;
+
+			img {			
+				width: 73%;
+			}
+			
+		}
+		.title-wrap {
+			display: none;
+		}
 	}
 }
 .section-wrapper {
@@ -431,7 +460,7 @@ HOME PAGE STYLES
 }
 #map-section {
 	position: relative;
-	z-index: -1;
+	z-index: 0;
 }
 
 /*********************
