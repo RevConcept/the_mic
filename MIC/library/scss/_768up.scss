@@ -32,6 +32,12 @@ HEADER STYLES
 *********************/
 
 .header {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	background: rgba( 255,255,255, 0.90 );
+	z-index: 999;
 
 	.inner-top {
 		display: none;
@@ -42,8 +48,9 @@ HEADER STYLES
 
 		ul {
 			text-align: center;
-			margin: 0 auto 20px;
+			margin: 0 auto 10%;
 			background:none;
+			height: 20px;
 			display: block;
 
 			li {
@@ -240,7 +247,6 @@ HOME PAGE STYLES
 				display: none;				
 				position: absolute;
 				left: 63px;
-				top: 0;
 
 				img {			
 					margin-top: 60px;

@@ -36,10 +36,8 @@ jQuery(document).ready(function($) {
     $(window).load(function() { 
         $("#status").fadeOut(300); 
         $("#preloader").delay(350).fadeOut(300, function() {
-            if (responsive_viewport >= 768) {
-                if (typeof mic_intro == 'function') { 
-                  mic_intro(); 
-                }
+            if (typeof mic_intro == 'function') { 
+              mic_intro(); 
             }
         });
     });
@@ -80,45 +78,36 @@ jQuery(document).ready(function($) {
         });
     }
 
-
     //navigation 
     $('.nav li a').click( function(e) {
         e.preventDefault();
 
-        //get the first class of menu item
+        //get first class of menu item
         var mic_menu_item = $(this).parent().attr('class').split(' ')[0];
-
+        
         if(mic_menu_item == 'mic-home') {
             $('body, html').animate({scrollTop:0}, 'slow', 'swing');
             return false;
         }
-
+        
+        //scroll to the id depending on the viewport size
         var mic_scroll_to = '';
-        var mic_header_height = $('.header').outerHeight(true);
-
-        if (responsive_viewport < 768) {
-
-            if (mic_menu_item == 'dining' || mic_menu_item == 'sports') {
-                mic_scroll_to = $('#'+mic_menu_item).parents('.fourcol').offset().top - 90;
-            } else
-            if (mic_menu_item == 'nightlife') {
-                mic_scroll_to = $('#'+mic_menu_item).offset().top - 130;
-            } else {
-                mic_scroll_to = $('#'+mic_menu_item).parents('.inner-section').offset().top - 78;
-            }
+        if (responsive_viewport <= 481) {
+            mic_scroll_to = $('#'+mic_menu_item).offset().top - 150;
         }
 
-        if (responsive_viewport >= 768) {
-            if (mic_menu_item == 'nightlife') {
-                mic_scroll_to = $('#'+mic_menu_item).offset().top - 180;
-            } else {
-                mic_scroll_to = $('#'+mic_menu_item).parents('.inner-section').offset().top - mic_header_height;
-            }
+        if (responsive_viewport > 481 && responsive_viewport <= 768) {
+            mic_scroll_to = $('#'+mic_menu_item).offset().top - 200;
+        }
+
+        if (responsive_viewport > 768) {
+            mic_scroll_to = $('#'+mic_menu_item).offset().top - 300;
         }
 
         $('body, html').animate({scrollTop:mic_scroll_to}, 'slow', 'swing');
 
     });
+
 
     /*
     Responsive jQuery is a tricky thing.
@@ -138,13 +127,18 @@ jQuery(document).ready(function($) {
     
     /* if is larger than 481px */
     if (responsive_viewport > 481) {
-
+        /*
+        $('.down-arrow', '#top-section').click(function() {
+            var mic_scroll_to = $('#antigua').offset().top - 300;
+            $('body,html').animate({scrollTop:mic_scroll_to}, 'slow', 'swing');
+        });
+*/
         
     } /* end larger than 481px */
 
     if (responsive_viewport < 768) {
 
-        //mobile menu display and animate
+        //mobile menu display hide the menu with 
         var header_nav = $('.header .nav');
         var orig_height = header_nav.height();
         header_nav.addClass('close').css( {'height':0,'opacity':0});
@@ -159,27 +153,19 @@ jQuery(document).ready(function($) {
                     header_nav.addClass('open').animate( {'height': orig_height+'px', 'opacity':1} );
                 } else if ( header_nav.hasClass('open') ) {
                     header_nav.removeClass('open');
-                    header_nav.addClass('close').animate( {'height': 0, 'opacity':0}, function() {
-                        mic_main_menu.hide();
-                    } );
-                    
+                    header_nav.addClass('close').animate( {'height': 0, 'opacity':0} );
+                    mic_main_menu.hide();
                 }
             }
         };
 
         window.mic = mic;
-
-        $('.header .nav ul li a').click( function() {
-            mic.show_header_menu();
-        });
     }
     
     /* if is above or equal to 768px */
     if (responsive_viewport >= 768) {
 
-        //window scoll for header nav
-
-        //hover animation for header nav
+        //hover animation for main navigation
         $('.header .nav ul li .animate span').css({'width':0});
         $('.header .nav ul li').hover(function() {
                $('.animate span', this).stop().animate({'width':'100%'}, 300, 'swing');
@@ -188,22 +174,36 @@ jQuery(document).ready(function($) {
                 $('.animate span', this).stop().animate({'width':0}, 100, 'swing');
             });
 
+        //magic header
+        var mic_header = $('.header');
+        var orig_header_height = mic_header.height();
+        mic_header.css({'margin-top':'-103px','opacity':0});
+
+        $(window).scroll( function() {
+            var window_top = $(window).scrollTop();
+            mic_header.stop();
+            if (window_top >= 200) {
+                mic_header.animate({'opacity':1,'margin-top':0},'slow','swing');                
+            }
+            if (window_top < 200) {
+                mic_header.animate({'margin-top':'-103px','opacity':0},'fast','swing');                
+            }
+        });
+
         //intro 
         $('.title-wrap').hide();
         $('.image-wrap').show();
-        $('.inner-intro').hide();
+        $('.inner-intro').css('margin-top','-450px');
 
         function mic_intro() {
-            $('.inner-intro').fadeIn(1000, function() {
-                $('.image-wrap').delay(2750).fadeOut(500,'linear');
-                $('.title-wrap').delay(3250).fadeIn(500,'linear');
+            $('.inner-intro').delay(200).animate({'margin-top':'200px'},'slow','swing', function() {
+                $('.image-wrap').delay(750).fadeOut(500,'linear');
+                $('.title-wrap').delay(1250).fadeIn(500,'linear');
             });
-                
         }
 
         $('.down-arrow').click( function() {
-            var header_height = $('.header').outerHeight(true);
-            var section_one_top = $('#antigua').parents('.inner-section').offset().top - header_height;
+            var section_one_top = $('#antigua').offset().top - 300;
             $('body,html').animate({scrollTop:section_one_top},'slow','swing');
         });     
 
@@ -222,31 +222,6 @@ jQuery(document).ready(function($) {
 
 
     //Animated icons
-    $('li.gaming').click(function(){
-
-        $('.icon.gaming img').removeClass().addClass(' pulse animated');
-            var wait = window.setTimeout( function(){
-                $('.icon.gaming img').removeClass()}, 1300 );
-    });
-
-    $('li.dining').click(function(){
-
-        $('.icon.dining img').removeClass().addClass(' pulse animated');
-            var wait = window.setTimeout( function(){
-            $('.icon.dining img').removeClass()},
-            1300
-        );
-    });
-
-    $('li.sports').click(function(){
-
-        $('.icon.sports img').removeClass().addClass(' pulse animated');
-            var wait = window.setTimeout( function(){
-            $('.icon.sports img').removeClass()},
-            1300
-        );
-    });
-
     $('img.icon').addClass('animated pulse');
     
 	

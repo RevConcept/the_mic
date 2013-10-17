@@ -76,8 +76,11 @@
 				<div id="inner-header" class="wrap clearfix">
 
 					<div class="inner-top clearfix">
-							<a class="h2" id="mobile-menu" onclick="mic.show_header_menu()">
-								Menu
+							<a id="logo" href="<?php echo home_url(); ?>" rel="nofollow">
+								<img src="<?php echo get_template_directory_uri(); ?>/library/images/logo.png" alt="The Majestic Isle Casino" />
+							</a>
+							<a id="mobile-menu" id="mobile-menu" onclick="mic.show_header_menu()">
+								<img src="<?php echo get_template_directory_uri(); ?>/library/images/mobile-menu.png" alt="Menu" />
 							</a>
 					</div> <?php //end .inner-top ?>
 
