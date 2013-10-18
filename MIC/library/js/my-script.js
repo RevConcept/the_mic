@@ -116,7 +116,7 @@ jQuery(document).ready(function($) {
             }
         }
 
-        $('body, html').animate({scrollTop:mic_scroll_to}, 'slow', 'swing');
+        $('body, html').animate({scrollTop:mic_scroll_to}, 1500, 'swing');
 
     });
 
@@ -195,8 +195,8 @@ jQuery(document).ready(function($) {
 
         function mic_intro() {
             $('.inner-intro').fadeIn(1000, function() {
-                $('.image-wrap').delay(2750).fadeOut(500,'linear');
-                $('.title-wrap').delay(3250).fadeIn(500,'linear');
+                $('.image-wrap').delay(1750).fadeOut(500,'linear');
+                $('.title-wrap').delay(2250).fadeIn(500,'linear');
             });
                 
         }

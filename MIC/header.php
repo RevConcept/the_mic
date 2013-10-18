@@ -46,6 +46,7 @@
 			var mapProp = {
 			  center:new google.maps.LatLng(<?php if (get_field( 'latlon', 'options')) : echo get_field('latlon', 'options'); else : echo '17.124714,-61.786423'; endif; ?>),
 			  zoom:<?php if (get_field( 'zoom_level', 'options')) : echo get_field('zoom_level', 'options'); else : echo '12'; endif; ?>,
+			  scrollwheel: false,
 			  mapTypeId:google.maps.MapTypeId.ROADMAP
 			  };
 			var map=new google.maps.Map(document.getElementById("googleMap")
