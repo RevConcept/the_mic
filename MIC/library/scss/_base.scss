@@ -366,7 +366,7 @@ HOME PAGE STYLES
 
 	.inner-intro {
 		display: block;
-		background: url(../images/intro-bg.png) no-repeat;
+		background: url(../images/intro-img-sm.png) no-repeat;
 		@include bg-size(cover);
 		width: 200px;
 		height: 200px;
@@ -378,14 +378,16 @@ HOME PAGE STYLES
 			position: absolute;
 			top: 28px;
 			img {			
-				
-				width: 73%;
-				max-width: 73%;
+				display: none;
+				width: 100%;
 			}
 			
 		}
 		.title-wrap {
 			display: none;
+			span.h2  {
+				-webkit-text-size-adjust: 100%;
+			}
 		}
 	}
 }
