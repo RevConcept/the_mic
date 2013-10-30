@@ -5,8 +5,8 @@ Web development for The Majestic Isle Casino website.
 
 Three Options Pages: 
 
-1. Home Page -
-	Home Page options are setup into tabs: page order, and intro section.
+1. Page Options -
+	Page Options are setup into tabs: page order, and intro section.
 3. Google Maps -
 	Embedded Google Map of Antigua Barbuda is the default. Map options include, LatLan and zoom level.
 	Note: no pin point at this time, but an option can easily be added.
