@@ -408,13 +408,19 @@ HOME PAGE STYLES
   height: 496px; }
   #intro .inner-intro {
     width: 400px;
-    height: 400px; }
+    height: 400px;
+    background: url(../images/intro-bg.png) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
     #intro .inner-intro .image-wrap {
       top: 60px;
       left: 60px; }
       #intro .inner-intro .image-wrap img {
         width: 100%;
-        max-width: 100%; }
+        max-width: 100%;
+        display: block; }
 
 .section-wrapper {
   background: url(../images/main-bg-768.jpg) no-repeat;
