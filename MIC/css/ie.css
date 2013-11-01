@@ -467,11 +467,6 @@ HOME PAGE STYLES
 #intro .inner-intro {
   width: 400px;
   height: 400px;
-  background: url(../images/intro-bg.png) no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 #intro .inner-intro .image-wrap {
   top: 60px;
@@ -480,7 +475,6 @@ HOME PAGE STYLES
 #intro .inner-intro .image-wrap img {
   width: 100%;
   max-width: 100%;
-  display: block;
 }
 
 .section-wrapper {
@@ -608,7 +602,7 @@ HEADER STYLES
 }
 .header .nav ul {
   text-align: center;
-  margin: 0 0 20px 33px;
+  margin: 0 0 20px 29px;
   background: none;
   display: block;
 }
@@ -763,7 +757,7 @@ HOME PAGE STYLES
   margin-top: 60px;
 }
 #intro .inner-intro .title-wrap {
-  top: 120px;
+  top: 140px;
   left: 56px;
   position: absolute;
 }

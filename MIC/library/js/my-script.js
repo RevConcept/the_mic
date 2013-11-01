@@ -130,7 +130,6 @@ jQuery(document).ready(function($) {
     /* getting viewport width */
     var responsive_viewport = $(window).width();
     
-    
     /* if is below 481px */
     if (responsive_viewport < 481) {
 

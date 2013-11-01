@@ -145,6 +145,7 @@ function bones_scripts_and_styles() {
     // enqueue styles and scripts
     wp_enqueue_script( 'bones-modernizr' );
     wp_enqueue_style( 'bones-stylesheet' );
+    mic_add_custom_css('bones-stylesheet');
     wp_enqueue_style( 'bones-ie-only' );
 
     $wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
@@ -160,6 +161,70 @@ function bones_scripts_and_styles() {
   }
 }
 
+function mic_add_custom_css($bones_stylesheet) {
+	$mic_page_order = get_field('page_order', 'options'); 
+	$mic_window_count = 0;
+	$mic_phone_css = '';
+	$mic_tablet_css = '@media only screen and (min-width: 481px) {';
+	$mic_full_css = '@media only screen and (min-width: 768px) {';
+
+	foreach($mic_page_order as $mic_page) :
+		if($mic_page[image_after]) :
+			$mic_window_count++;
+			$mic_img_phone = wp_get_attachment_image_src($mic_page[image_after], 'small-device');
+			$mic_img_tablet = wp_get_attachment_image_src($mic_page[image_after], 'medium-device');
+			$mic_img_full = wp_get_attachment_image_src($mic_page[image_after], 'full');
+			$mic_phone_css .= "
+				#window$mic_window_count {
+						background: url($mic_img_phone[0]) no-repeat center center;
+						-webkit-background-size: cover;
+	  					   -moz-background-size: cover;
+						     -o-background-size: cover;
+						        background-size: cover;
+						  background-attachment: fixed;
+						  height: $mic_img_phone[2]px;
+				}";
+
+			$mic_tablet_css .= "
+				
+					#window$mic_window_count {
+						background: url($mic_img_tablet[0]) no-repeat center center;
+						-webkit-background-size: cover;
+	  					   -moz-background-size: cover;
+						     -o-background-size: cover;
+						        background-size: cover;
+						  background-attachment: fixed;
+						  height: $mic_img_tablet[2]px;
+					}
+				
+			";
+
+			$mic_full_css .= "
+				
+					#window$mic_window_count {
+						background: url($mic_img_full[0]) no-repeat center center;
+						-webkit-background-size: cover;
+	  					   -moz-background-size: cover;
+						     -o-background-size: cover;
+						        background-size: cover;
+						  background-attachment: fixed;
+						  height: $mic_img_full[2]px;
+					}
+				
+			";
+				
+		endif;
+	endforeach;
+
+	$mic_tablet_css .= "}";
+	$mic_full_css .= "}";
+
+	wp_add_inline_style( $bones_stylesheet, $mic_phone_css );
+	wp_add_inline_style( $bones_stylesheet, $mic_tablet_css );
+	wp_add_inline_style( $bones_stylesheet, $mic_full_css );
+
+}
+
 /*********************
 THEME SUPPORT
 *********************/
@@ -172,6 +237,10 @@ function bones_theme_support() {
 
 	// default thumb size
 	set_post_thumbnail_size(125, 125, true);
+
+	//add device sizes
+	add_image_size( 'small-device', 481, 9999 );
+	add_image_size( 'medium-device', 768, 9999 );
 
 	// wp custom background (thx to @bransonwerner for update)
 	add_theme_support( 'custom-background',

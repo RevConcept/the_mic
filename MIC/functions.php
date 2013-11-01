@@ -193,130 +193,6 @@ function mic_print_intro() {
 
 }
 
-function mic_print_section_two() {
-
-	//icon	
-	if ( get_field('section_two_icon', 'options') ) :
-		echo '<img src="' . get_field('section_two_icon', 'options') . '" alt="Majestic Isle Casino" />';
-	endif;
-	//title	
-	if ( get_field('section_two_title', 'options') ) :
-		echo '<h2 id="antigua">' . get_field('section_two_title', 'options') . '<span></span></h2>';
-	endif;
-	//subtitle	
-	if ( get_field('section_two_subtitle', 'options') ) :
-		echo '<span class="subtitle">' . get_field('section_two_subtitle', 'options') . '</span>';
-	endif;
-	//content	
-	if ( get_field('section_two_content', 'options') ) :
-		echo get_field('section_two_content', 'options');
-	endif;
-}
-
-function mic_print_section_three() {
-
-	//icon	
-	if ( get_field('section_three_icon', 'options') ) :
-		echo '<img src="' . get_field('section_three_icon', 'options') . '" alt="Majestic Isle Casino" />';
-	endif;
-	//title	
-	if ( get_field('section_three_title', 'options') ) :
-		echo '<h2 id="casino">' . get_field('section_three_title', 'options') . '<span></span></h2>';
-	endif;
-	//subtitle	
-	if ( get_field('section_three_subtitle', 'options') ) :
-		echo '<span class="subtitle">' . get_field('section_three_subtitle', 'options') . '</span>';
-	endif;
-	//content	
-	if ( get_field('section_three_content', 'options') ) :
-		echo get_field('section_three_content', 'options');
-	endif;
-}
-
-function mic_print_section_four() {
-
-	//three columns
-	if ( get_field('three_columns', 'options') ) :
-		$col_options = get_field('three_columns', 'options');
-
-		//break up into groups of three to display in blocks of three columns
-		$block_sets = array_chunk($col_options, 3);
-		if ( !empty($block_sets) ) :
-			foreach($block_sets as $blocks) :
-
-				//wrap each block of 3
-				echo '<div id="three-columns" class="clearfix">';
-
-				foreach($blocks as $key=>$value) :
-					switch ($key) {
-						case 0:
-							$block_str = '<div class="fourcol first">';
-							break;
-						case 1:
-							$block_str = '<div class="fourcol ">';
-							break;
-						case 2:
-							$block_str = '<div class="fourcol last">';
-							break;
-						
-						default:
-							$block_str = '<div class="fourcol ">';
-							break;
-					}
-
-				
-					if ( !empty($value[icon]) ) {
-						$smtitle = $value[title];
-						$block_str .= '<div class="img-wrap icon '.strtolower($smtitle).'"><img src="'. $value[icon] .'" /></div>';
-					}
-					
-					if ( !empty($value[title]) ) {
-						
-						if (strstr($value[title], ' ', true)) {
-							$smtitle = strstr($value[title], ' ', true);
-						} else {
-							$smtitle = $value[title];
-						}
-						$block_str .= '<h3 id="'.strtolower($smtitle).'">' . $value[title] .'<span></span></h3>';
-					}
-
-					if ( !empty($value[description]) ) {
-						$block_str .= '<p>'. $value[description] .'</p>';
-					}
-				
-					$block_str .= '</div>';
-					echo $block_str;
-					
-				endforeach;
-
-				
-				echo '</div>';
-			endforeach;
-		endif;
-	endif;
-
-	//title	
-	if ( get_field('last_section_title', 'options') ) :
-		if (strstr(get_field('last_section_title', 'options'), ' ', true)) {
-			$lttitle = strstr(get_field('last_section_title', 'options'), ' ', true);
-		} else {
-			$lttitle = get_field('last_section_title', 'options');
-		}
-		echo '<h3 id="'.strtolower($lttitle).'">' . get_field('last_section_title', 'options') . '<span></span></h3>';
-	endif;
-	//content
-	if ( get_field('last_section_content', 'options') ) :
-		echo get_field('last_section_content', 'options');
-	endif;
-	//cash pot title	
-	if ( get_field('cash_pot_title', 'options') ) :
-		echo '<span class="cash-pot subtitle">' . get_field('cash_pot_title', 'options') . '</span>';
-	endif;
-	//cash pot amount	
-	if ( get_field('cash_pot_amount', 'options') ) :
-		echo '<span class="pot-amount">$' . get_field('cash_pot_amount', 'options') . '</span>';
-	endif;
-}
 
 function mic_print_sitemap() {
 
@@ -361,7 +237,7 @@ function mic_print_addr() {
 	endif;
 	$mic_email = get_field('email', 'options');
 	if ($mic_email) :
-		$mic_contact .= $mic_email;
+		$mic_contact .= '<a href="mailto:'.$mic_email.'">'.$mic_email.'</a>';
 	endif;
 	if ($mic_email || $mic_phone) :
 		echo '<h3>Contact</h3>';
@@ -400,9 +276,129 @@ function mic_print_social_icons() {
 	
 }
 
+function mic_print_main_section($mic_page_id) {
+
+	$mic_main_str = '';
+	//icon	
+	if ( get_field('section_two_icon', $mic_page_id) ) :
+		$mic_main_str .= '<img src="' . get_field('section_two_icon', $mic_page_id) . '" alt="Majestic Isle Casino" />';
+	endif;
+	//title	
+	if ( get_field('section_two_title', $mic_page_id) ) :
+		$mic_main_title = get_field('section_two_title', $mic_page_id);
+
+		if ( get_field('nav_id', $mic_page_id) ) :
+			$mic_nav_id = get_field('nav_id', $mic_page_id);
+		endif;
+		
+		$mic_main_str .= '<h2 id="'.$mic_nav_id.'">' . $mic_main_title . '<span></span></h2>';
+	endif;
+	//subtitle
+	if ( get_field('section_two_subtitle', $mic_page_id) ) :
+		$mic_main_str .= '<span class="subtitle">' . get_field('section_two_subtitle', $mic_page_id) . '</span>';
+	endif;
+	//content
+	if ( get_field('section_two_content', $mic_page_id) ) :
+		$mic_main_str .= get_field('section_two_content', $mic_page_id);
+	endif;
+
+	echo $mic_main_str;
+}
+
+function mic_print_block_section($mic_page_id) {
+	//three columns
+	if ( get_field('three_columns', $mic_page_id) ) :
+		$col_options = get_field('three_columns', $mic_page_id);
+
+		//break up into groups of three to display in blocks of three columns
+		$block_sets = array_chunk($col_options, 3);
+		if ( !empty($block_sets) ) :
+			foreach($block_sets as $blocks) :
+
+				//wrap each block of 3
+				echo '<div id="three-columns" class="clearfix">';
+
+				foreach($blocks as $key=>$value) :
+					switch ($key) {
+						case 0:
+							$block_str = '<div class="fourcol first">';
+							break;
+						case 1:
+							$block_str = '<div class="fourcol ">';
+							break;
+						case 2:
+							$block_str = '<div class="fourcol last">';
+							break;
+						
+						default:
+							$block_str = '<div class="fourcol ">';
+							break;
+					}
+
+					if ( !empty($value[title]) ) {
+						
+						if (strstr($value[title], ' ', true)) {
+							$smtitle = strstr($value[title], ' ', true);
+						} else {
+							$smtitle = $value[title];
+						}
+					}
+
+					if ( !empty($value[icon]) ) {
+						$block_str .= '<div class="img-wrap icon '.strtolower($smtitle).'"><img src="'. $value[icon] .'" alt="Majestic Isle Casino" /></div>';
+					}
+					
+					
+					$block_str .= '<h3 id="'.strtolower($smtitle).'">' . $value[title] .'<span></span></h3>';
+					
+
+					if ( !empty($value[description]) ) {
+						$block_str .= '<p>'. $value[description] .'</p>';
+					}
+				
+					$block_str .= '</div>';
+					echo $block_str;
+					
+				endforeach;
+
+				
+				echo '</div>';
+			endforeach;
+		endif;
+	endif;
+
+	//title	
+	if ( get_field('last_section_title', $mic_page_id) ) :
+		if (strstr(get_field('last_section_title', $mic_page_id), ' ', true)) {
+			$lttitle = strstr(get_field('last_section_title', $mic_page_id), ' ', true);
+		} else {
+			$lttitle = get_field('last_section_title', $mic_page_id);
+		}
+		echo '<h3 id="'.strtolower($lttitle).'">' . get_field('last_section_title', $mic_page_id) . '<span></span></h3>';
+	endif;
+	//content
+	if ( get_field('last_section_content', $mic_page_id) ) :
+		echo get_field('last_section_content', $mic_page_id);
+	endif;
+	//cash pot title	
+	if ( get_field('cash_pot_title', $mic_page_id) ) :
+		echo '<span class="cash-pot subtitle">' . get_field('cash_pot_title', $mic_page_id) . '</span>';
+	endif;
+	//cash pot amount	
+	if ( get_field('cash_pot_amount', $mic_page_id) ) :
+		echo '<span class="pot-amount">$' . get_field('cash_pot_amount', $mic_page_id) . '</span>';
+	endif;
+}
+
+/*
+function mic_apply_window_styling($mic_windows) {
+    print_r($mic_windows);
+}
+*/
+
 //add options pages for advanced custom fields
 if ( function_exists('acf_add_options_sub_page') ) {
-	acf_add_options_sub_page( 'Home Page' );
+	acf_add_options_sub_page( 'Page Options' );
 	acf_add_options_sub_page( 'Google Maps' );
 	acf_add_options_sub_page( 'Footer' );
 }

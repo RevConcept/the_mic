@@ -408,19 +408,13 @@ HOME PAGE STYLES
   height: 496px; }
   #intro .inner-intro {
     width: 400px;
-    height: 400px;
-    background: url(../images/intro-bg.png) no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; }
+    height: 400px; }
     #intro .inner-intro .image-wrap {
       top: 60px;
       left: 60px; }
       #intro .inner-intro .image-wrap img {
         width: 100%;
-        max-width: 100%;
-        display: block; }
+        max-width: 100%; }
 
 .section-wrapper {
   background: url(../images/main-bg-768.jpg) no-repeat;
@@ -529,7 +523,7 @@ HEADER STYLES
   margin: 0 auto; }
   .header .nav ul {
     text-align: center;
-    margin: 0 0 20px 29px;
+    margin: 0 0 20px 33px;
     background: none;
     display: block; }
     .header .nav ul li {
@@ -659,7 +653,7 @@ HOME PAGE STYLES
       #intro .inner-intro .image-wrap img {
         margin-top: 60px; }
     #intro .inner-intro .title-wrap {
-      top: 140px;
+      top: 120px;
       left: 56px;
       position: absolute; }
       #intro .inner-intro .title-wrap span {

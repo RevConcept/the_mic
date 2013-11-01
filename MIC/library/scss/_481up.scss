@@ -37,8 +37,6 @@ HOME PAGE STYLES
 	.inner-intro {
 		width: 400px;
 		height:400px;
-		background: url(../images/intro-bg.png) no-repeat;
-		@include bg-size(cover);
 		.image-wrap {
 			top: 60px;
 			left: 60px;
@@ -46,7 +44,6 @@ HOME PAGE STYLES
 			img {
 				width: 100%;
 				max-width: 100%;
-				display: block;
 			}
 		}
 	}

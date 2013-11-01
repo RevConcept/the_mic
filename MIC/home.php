@@ -6,49 +6,61 @@
 												<?php mic_print_intro(); ?>
 											
 										</div>
-									
 
-									<!-- section two -->
-									<div class="section-wrapper">
-										<div class="inner-section">
-											<div class="main-section wrap clearfix">
-												
-													<?php mic_print_section_two(); ?>
-												
-											</div>
-										</div>
-									</div>
+<?php $mic_page_order = get_field('page_order', 'options'); 
 
-									<div id="window1">
-									</div>
+	  $mic_window_count = 0;
 
-									<!-- section three -->
-									<div class="section-wrapper">
-										<div class="inner-section">
-											<div class="main-section wrap clearfix">
-												
-													<?php mic_print_section_three(); ?>
-												
-											</div>
-										</div>
-									</div>
+	  foreach($mic_page_order as $mic_page) :
 
-									<div id="window2">
-									</div>
+	  	$mic_page_id = $mic_page[select_a_page]->ID;
+	    
+	    $mic_page_tempate = get_page_template_slug( $mic_page_id );
 
-									<!-- section four -->
+	    //print a main section
+	    if ($mic_page_tempate == 'main-section-template.php') : ?>
 
-									<div class="section-wrapper last-section">
-										<div class="inner-section">
-											<div class="section-four wrap clearfix">
-												
-													<?php mic_print_section_four(); ?>
-												
-											</div>
-										</div>
-									</div>
+			<div class="section-wrapper">
+				<div class="inner-section">
+					<div class="main-section wrap clearfix">
+						
+							<?php mic_print_main_section($mic_page_id); ?>
+						
+					</div>
+				</div>
+			</div>
+	    	
+	   <?php endif;
+
+	   //print a block section 
+	    if ($mic_page_tempate == 'block-section-template.php') : ?>
+
+			<div class="section-wrapper last-section">
+				<div class="inner-section">
+					<div class="section-four wrap clearfix">
+						
+							<?php mic_print_block_section($mic_page_id); ?>
+						
+					</div>
+				</div>
+			</div>
+
+	  <?php  endif;
+
+
+        // add a window section
+  	  	if($mic_page[image_after]) :
+	  		$mic_window_count++; ?>
+	  		<div id="window<?php echo $mic_window_count; ?>">
+			</div>
+	  <?php endif;
+	  endforeach;
+	  
+
+?>
 
 									<div id="map-section" >
 										<div id="googleMap" style="width:100%;height:380px;"></div>
 									</div>
+
 <?php get_footer(); ?>
