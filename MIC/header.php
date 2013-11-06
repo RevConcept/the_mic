@@ -12,7 +12,15 @@
 		<!-- Google Chrome Frame for IE -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title><?php wp_title(''); ?></title>
+		<?php if(is_front_page()) { ?>
+
+		<title><?php bloginfo('name'); ?></title>
+
+		<?php } else { ?>
+
+		<title><?php wp_title(''); ?> | <?php bloginfo('name'); ?></title>
+
+		<?php } ?>
 
 		<!-- mobile meta (hooray!) -->
 		<meta name="HandheldFriendly" content="True">
@@ -83,9 +91,24 @@
 					</div> <?php //end .inner-top ?>
 
 					<div class="header-nav-wrapper">
+
+						<?php if(is_front_page()) { ?>
+						
 						<nav role="navigation">
 							<?php bones_main_nav(); ?>
 						</nav>
+
+						<?php } else { ?>
+
+						<nav role="navigation">
+							<ul class="single-page">
+								<li class="image-replacement"><a href="<?php bloginfo('url'); ?>">The Majesctic Isle Casino</a></li>
+							</ul>
+						</nav>
+
+						<?php } ?>
+
+
 					</div>
 					
 

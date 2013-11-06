@@ -457,6 +457,26 @@ HOME PAGE STYLES
 }
 
 
+/*********************
+SINGLE PAGE STYLES
+*********************/
+
+section.single-page {
+	min-height: 600px;
+	padding-top: 200px;
+	text-align: center;
+}
+
+ul.single-page {
+	margin: 0px auto 20px auto;
+
+	li {
+		max-width: 278px;
+		height: 82px;
+		margin: 0px auto;
+		background: url(../images/logo.png) no-repeat center;
+	}
+}
 
 /*********************
 PARAGRAPH STYLES
@@ -1036,7 +1056,7 @@ FOOTER STYLES
 		}
 	}
 
-	#footer-form {
+	#icpsignup769 {
 		input[type="text"] {
 			border: 0;
 			@include border-radius( 7px );
@@ -1044,7 +1064,7 @@ FOOTER STYLES
 		    color: #FFFFFF;
 		    font-style: italic;
 		    margin: 10px 0 5px;
-		    padding: 7px 20px;
+		    padding: 10px 20px;
 		    max-width: 250px;
 		    width: 100%;
 		    display: block;

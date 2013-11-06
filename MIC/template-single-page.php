@@ -1,3 +1,8 @@
+<?php /*
+Template Name: Single Page
+*/
+?>
+
 <?php get_header(); ?>
 
 		<div id="content">
@@ -14,13 +19,11 @@
 
 						<section class="single-page">
 
-							<h2>Not Found</h2>
+							<h2><?php echo $title; ?></h2>
 
-							<span class="subtitle">Oops!</span>
+							<span class="subtitle"><?php echo $subtitle; ?></span>
 
-							<p>Sorry. What you're looking for can't be found. Please click the button below to go back to the main site.</p>
-
-							<a class="button" href="<?php bloginfo('url'); ?>">Back</a>
+							<?php echo $content; ?>
 
 						</section>
 						
