@@ -367,6 +367,23 @@ function mic_print_block_section($mic_page_id) {
 		endif;
 	endif;
 
+
+	//title	
+	if ( get_field('first_section_title', $mic_page_id) ) :
+		if (strstr(get_field('first_section_title', $mic_page_id), ' ', true)) {
+			$lttitle = strstr(get_field('first_section_title', $mic_page_id), ' ', true);
+		} else {
+			$lttitle = get_field('first_section_title', $mic_page_id);
+		}
+		echo '<h3 id="'.strtolower($lttitle).'">' . get_field('first_section_title', $mic_page_id) . '<span></span></h3>';
+	endif;
+	//content
+	if ( get_field('first_section_content', $mic_page_id) ) :
+		echo get_field('first_section_content', $mic_page_id);
+		echo '<br/>';
+	endif;
+
+
 	//title	
 	if ( get_field('last_section_title', $mic_page_id) ) :
 		if (strstr(get_field('last_section_title', $mic_page_id), ' ', true)) {
