@@ -249,6 +249,9 @@ BUTTONS
     -transition: 0.5s;
     transition: 0.5s; }
 
+.last-section .button, .last-section .button:visited {
+  background-color: #9F7F34; }
+
 .blue-button, .blue-button:visited {
   border-color: #1472ad;
   text-shadow: 0 1px 1px #1472ad;

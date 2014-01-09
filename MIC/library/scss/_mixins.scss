@@ -316,6 +316,13 @@ BUTTONS
 	}
 }
 
+.last-section {
+
+	.button, .button:visited {
+		background-color: #9F7F34;
+	}
+}
+
 .blue-button, .blue-button:visited {
 	border-color: darken($bones-blue, 10%);
 	text-shadow: 0 1px 1px darken($bones-blue, 10%);
