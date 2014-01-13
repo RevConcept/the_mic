@@ -700,9 +700,6 @@ BUTTONS
     -transition: 0.5s;
     transition: 0.5s; }
 
-.last-section .button, .last-section .button:visited {
-  background-color: #9F7F34; }
-
 .blue-button, .blue-button:visited {
   border-color: #1472ad;
   text-shadow: 0 1px 1px #1472ad;
@@ -1029,7 +1026,9 @@ HOME PAGE STYLES
     position: relative; }
     #intro .inner-intro .image-wrap {
       position: absolute;
-      top: 28px; }
+      top: 28px;
+      width: 200px;
+      height: 200px; }
       #intro .inner-intro .image-wrap img {
         width: 73%;
         max-width: 73%; }
@@ -1614,7 +1613,9 @@ tweeners.
       height: 400px; }
       #intro .inner-intro .image-wrap {
         top: 60px;
-        left: 60px; }
+        left: 60px;
+        width: 280px;
+        height: 280px; }
         #intro .inner-intro .image-wrap img {
           width: 100%;
           max-width: 100%; }
@@ -1940,7 +1941,9 @@ you can add resource intensive styles.
         display: none;
         position: absolute;
         left: 63px;
-        top: 0; }
+        top: 0;
+        width: auto;
+        height: auto; }
         #intro .inner-intro .image-wrap img {
           margin-top: 60px; }
       #intro .inner-intro .title-wrap {
