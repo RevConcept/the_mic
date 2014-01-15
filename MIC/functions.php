@@ -301,8 +301,25 @@ function mic_print_main_section($mic_page_id) {
 	if ( get_field('section_two_content', $mic_page_id) ) :
 		$mic_main_str .= get_field('section_two_content', $mic_page_id);
 	endif;
+	// images
 
 	echo $mic_main_str;
+
+	$images = get_field('images_casino', $mic_page_id);
+	
+	if( $images ):
+		$first = true;
+		$firstClass = 'button';
+		foreach( $images as $image ):
+			echo '<a class="'.$firstClass.'" data-lightbox="mic" href="'.$image['url'].'">';
+			if ($first) {
+				echo 'Photo Gallery';
+				$first = false;
+				$firstClass = "";
+			}
+			echo '</a>';
+		endforeach;
+	endif;
 }
 
 function mic_print_block_section($mic_page_id) {

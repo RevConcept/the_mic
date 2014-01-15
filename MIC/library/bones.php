@@ -128,11 +128,17 @@ function bones_scripts_and_styles() {
     // modernizr (without media query polyfill)
     wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 
+    // lightbox
+    wp_register_script( 'lightbox', get_stylesheet_directory_uri(). '/library/js/libs/lightbox-2.6.min.js', array(), '2.6.0', true );
+
     // register main stylesheet
     wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
 
     // ie-only style sheet
     wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
+
+    // lightbox stlye
+    wp_register_style( 'lightbox', get_stylesheet_directory_uri(). '/library/css/lightbox.css', array(), '' );
 
     // comment reply script for threaded comments
     if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
@@ -144,9 +150,11 @@ function bones_scripts_and_styles() {
 
     // enqueue styles and scripts
     wp_enqueue_script( 'bones-modernizr' );
+    wp_enqueue_script('lightbox' );
     wp_enqueue_style( 'bones-stylesheet' );
     mic_add_custom_css('bones-stylesheet');
     wp_enqueue_style( 'bones-ie-only' );
+    wp_enqueue_style('lightbox' );
 
     $wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
 
