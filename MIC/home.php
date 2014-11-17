@@ -1,11 +1,24 @@
 <?php get_header(); ?>
-									<!-- top section -->
-									
-										<div id="intro">
-											
-												<?php mic_print_intro(); ?>
-											
-										</div>
+
+<!-- top section -->
+	
+	<?php 
+
+	$bg_img = get_field('top_bg_img', 'options');
+
+	if($bg_img) { ?>
+
+	<div id="intro" style="background: url(<?php echo $bg_img[url]; ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+
+	<?php } else { ?>
+	
+	<div id="intro">
+
+	<?php } ?>
+		
+			<?php mic_print_intro(); ?>
+		
+	</div>
 
 <?php $mic_page_order = get_field('page_order', 'options'); 
 
